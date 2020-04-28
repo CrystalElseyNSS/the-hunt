@@ -1,18 +1,40 @@
-let users = []
+import React, { useState, useEffect } from "react"
 
-export const useUsers = () => users.slice()
+export const UserContext = React.createContext()
 
-export const getUsers = () => fetch("http://localhost:3000/users")
-    .then(response => response.json())
-    .then(parsedUsers => users = parsedUsers)
+export const UserProvider = (props) => {
+    const [users, setUsers] = useState([])
 
-export const saveUser = user => {
-    return fetch('http://localhost:3000/users', {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(user)
-    })
-    .then(response => response.json())
+    const getUsers = () => {
+        return fetch("http://localhost:8088/users")
+            .then(res => res.json())
+            .then(setUsers)
+    }
+
+    const addUser = user => {
+        return fetch("http://localhost:8088/users", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(user)
+        })
+            .then(getUsers)
+    }
+
+    useEffect(() => {
+        getUsers()
+    }, [])
+
+    useEffect(() => {
+        console.log("****  USER APPLICATION STATE CHANGED  ****")
+    }, [users])
+
+    return (
+        <UserContext.Provider value={{
+            users, addUser
+        }}>
+            {props.children}
+        </UserContext.Provider>
+    )
 }
