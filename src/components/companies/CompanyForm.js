@@ -4,7 +4,7 @@ import { Button } from "reactstrap"
 
 export default props => {
 
-    const { addCompany, companies } = useContext(CompanyContext)
+    const { addCompany } = useContext(CompanyContext)
     const companyName = useRef()
 
     const constructNewCompany = () => {
@@ -16,8 +16,6 @@ export default props => {
             .then(props.toggler)
         }
     }
-
-
 
     return (
         <>
@@ -31,12 +29,11 @@ export default props => {
                             id="newCompany--name"
                             ref={companyName}
                             placeholder="Ex: Lonely Planet"
-                            required
                             autoFocus
                         />
                     </div>
                     <div>
-                        <Button type="submit" onClick={evt => {
+                        <Button color="info" type="submit" onClick={evt => {
                             evt.preventDefault()
                             constructNewCompany()
                             }}>

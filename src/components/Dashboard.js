@@ -11,8 +11,7 @@ export const Dashboard = () => {
     return (
         <>
             <header className="headerContainer">
-                <h1 className="header--name">The Hunt</h1>
-                <h2 className="header--tagline">Ready. Aim. Hired</h2>
+                <div className="logo"></div>
             </header>
         
             <main className="mainContainer">

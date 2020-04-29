@@ -36,8 +36,7 @@ const Login = props => {
     return (
         <article className="loginContainer">
             <header className="headerContainer">
-                <h1 className="header--name">The Hunt</h1>
-                <h2 className="header--tagline">Ready. Aim. Hired.</h2>
+                <div className="logo"></div>
             </header>
             <form className="loginForm" onSubmit={handleLogin}>
                 <h4 className="loginHeader">Please sign in: </h4>

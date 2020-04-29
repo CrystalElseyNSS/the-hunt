@@ -1,24 +1,35 @@
-import React, { useContext, useRef } from "react"
+import React, { useContext, useRef, useState } from "react"
+import DatePicker from "react-datepicker"
+import { Button } from "reactstrap"
 import { CompanyContext } from "../companies/CompanyProvider"
 import { SubmissionContext } from "./SubmissionProvider"
-import { Button } from "reactstrap"
+import "react-datepicker/dist/react-datepicker.css"
+import "./Submission.css"
 
 export default props => {
 
     const { companies } = useContext(CompanyContext)
     const { addSubmission } = useContext(SubmissionContext)
-    const companyName = useRef()
+    const company = useRef()
     const position = useRef()
-    const dateApplied = useRef()
-
-
+    const date = useRef()
+    const [dateApplied, setApplicationDate] = useState(new Date())
+    const handleChange = (dateEntered => setApplicationDate(dateEntered))
+    
     const constructNewSubmission = () => {
-        addSubmission({
-            companyName: companyName,
-            position: position.current.value,
-            dateApplied: dateApplied.current.value
-        })
-        .then(props.toggler)
+        const companyId = parseInt(company.current.value)
+        const foundCompany = companies.find(co => co.id === companyId).companyName
+        if (companyId === 0) {
+            window.alert("Please enter a new company, or select an existing company from the dropdown")
+        } else {
+            addSubmission({
+                companyName: foundCompany,
+                jobTitle: position.current.value,
+                dateApplied: dateApplied
+            })
+            .then(setApplicationDate)
+            .then(props.toggler)
+        }
     }
 
     return (
@@ -27,17 +38,17 @@ export default props => {
 
                 <fieldset>
                     <div>
-                        <label htmlFor="newSubmissionForm--selectCompany">Select Company: </label>
                         <select
                             defaultValue=""
-                            name="newSubmissionForm--selectCompany"
-                            ref={companyName}
-                            id="newSubmissionForm--selectCompany"
+                            name="newSubmissionForm--company"
+                            ref={company}
+                            id="newSubmissionForm--company"
+                            required
                         >
-                            <option>Select a location</option>
-                            {companies.map(e => (
-                                <option key={e.id} value={e.id}>
-                                    {e.name}
+                            <option>Select a Company</option>
+                            {companies.map(co => (
+                                <option key={co.id} value={co.id}>
+                                    {co.companyName}
                                 </option>
                             ))}
                         </select>
@@ -58,16 +69,14 @@ export default props => {
                 </fieldset>
 
                 <fieldset>
-                    <div>
+                    
                         <label htmlFor="newSubmissionForm--dateApplied">Date Applied:</label>
-                        <input
-                            type={Date}
+                        <div 
                             id="newSubmissionForm--dateApplied"
-                            ref={dateApplied}
-                            placeholder="Ex: Jr. Developer"
-                            required
-                        />
-                    </div>
+                            required 
+                            ref={date}>
+                                {<DatePicker selected={props.dateApplied} onChange={handleChange} />}
+                        </div>
                 </fieldset>
 
                 <Button type="submit" onClick={evt => {
@@ -78,5 +87,6 @@ export default props => {
 
             </form>
         </>
+        
     )
 }
