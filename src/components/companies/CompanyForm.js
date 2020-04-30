@@ -1,17 +1,20 @@
 import React, { useContext, useRef } from "react"
 import { CompanyContext } from "../companies/CompanyProvider"
 import { Button } from "reactstrap"
+import "./Company.css"
 
 export default props => {
 
     const { addCompany } = useContext(CompanyContext)
     const companyName = useRef()
+    let activeUser = parseInt(sessionStorage.getItem("user"))
 
     const constructNewCompany = () => {
         if (companyName !== "") {
             
             addCompany({
                 companyName: companyName.current.value,
+                userId: activeUser
             })
             .then(props.toggler)
         }
@@ -21,9 +24,9 @@ export default props => {
         <>
             <form className="newCompanyForm">
 
-                <fieldset>
+             <fieldset className="form--field">
                     <div>
-                        <label htmlFor="newCompany--name">Add New Company Target:</label>
+                        <label htmlFor="newCompany--name">Add New Company: </label>
                         <input
                             type="text"
                             id="newCompany--name"
@@ -33,11 +36,11 @@ export default props => {
                         />
                     </div>
                     <div>
-                        <Button color="info" type="submit" onClick={evt => {
+                        <Button size="sm" color="info" type="submit" onClick={evt => {
                             evt.preventDefault()
                             constructNewCompany()
                             }}>
-                            Save New Company
+                            Save
                         </Button>
                     </div>
                 </fieldset>
