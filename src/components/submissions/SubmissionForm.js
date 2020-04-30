@@ -13,9 +13,13 @@ export default props => {
     const company = useRef()
     const position = useRef()
     const date = useRef()
+    let activeUser = parseInt(sessionStorage.getItem("user"))
+    const thisUsersCompanies = companies.filter(co => co.userId === activeUser)
     const [dateApplied, setApplicationDate] = useState(new Date())
     const handleChange = (dateEntered => setApplicationDate(dateEntered))
-    
+
+
+
     const constructNewSubmission = () => {
         const companyId = parseInt(company.current.value)
         const foundCompany = companies.find(co => co.id === companyId).companyName
@@ -24,8 +28,9 @@ export default props => {
         } else {
             addSubmission({
                 companyName: foundCompany,
-                jobTitle: position.current.value,
-                dateApplied: dateApplied
+                position: position.current.value,
+                dateApplied: dateApplied,
+                userId: activeUser
             })
             .then(setApplicationDate)
             .then(props.toggler)
@@ -36,7 +41,7 @@ export default props => {
         <>
             <form className="newSubmissionForm">
 
-                <fieldset>
+                <fieldset className="form--field">
                     <div>
                         <select
                             defaultValue=""
@@ -46,7 +51,7 @@ export default props => {
                             required
                         >
                             <option>Select a Company</option>
-                            {companies.map(co => (
+                            {thisUsersCompanies.map(co => (
                                 <option key={co.id} value={co.id}>
                                     {co.companyName}
                                 </option>
@@ -55,7 +60,7 @@ export default props => {
                     </div>
                 </fieldset>  
 
-                <fieldset>
+                <fieldset className="form--field">
                     <div>
                         <label htmlFor="newSubmissionForm--position">Position Applied For:</label>
                         <input
@@ -68,22 +73,27 @@ export default props => {
                     </div>
                 </fieldset>
 
-                <fieldset>
-                    
+                <fieldset className="form--field">
+                    <section className="dateApplied">
                         <label htmlFor="newSubmissionForm--dateApplied">Date Applied:</label>
                         <div 
                             id="newSubmissionForm--dateApplied"
                             required 
                             ref={date}>
-                                {<DatePicker selected={props.dateApplied} onChange={handleChange} />}
+                                {<DatePicker placeholderText="Click to select a date"
+                                adjustDateOnChange
+                                selected={props.dateApplied} onChange={handleChange} />}
                         </div>
+                    </section>
                 </fieldset>
 
-                <Button type="submit" onClick={evt => {
-                    evt.preventDefault()
-                    constructNewSubmission()}}>
-                    Save New Job Target
-                </Button>
+                <div>
+                    <Button color="info" size="sm" className="form--field" type="submit" onClick={evt => {
+                        evt.preventDefault()
+                        constructNewSubmission()}}>
+                        Submit
+                    </Button>
+                </div>  
 
             </form>
         </>
