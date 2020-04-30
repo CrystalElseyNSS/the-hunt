@@ -18,8 +18,6 @@ export default props => {
     const [dateApplied, setApplicationDate] = useState(new Date())
     const handleChange = (dateEntered => setApplicationDate(dateEntered))
 
-
-
     const constructNewSubmission = () => {
         const companyId = parseInt(company.current.value)
         const foundCompany = companies.find(co => co.id === companyId).companyName
@@ -39,58 +37,54 @@ export default props => {
 
     return (
         <>
-            <form className="newSubmissionForm">
+            <form className="form__newSubmission">
 
                 <fieldset className="form--field">
-                    <div>
-                        <select
-                            defaultValue=""
-                            name="newSubmissionForm--company"
-                            ref={company}
-                            id="newSubmissionForm--company"
-                            required
-                        >
-                            <option>Select a Company</option>
+                    <select
+                        defaultValue=""
+                        name="newSub--company"
+                        ref={company}
+                        required                        
+                    >
+                        <option>Select a Company</option>
                             {thisUsersCompanies.map(co => (
-                                <option key={co.id} value={co.id}>
-                                    {co.companyName}
-                                </option>
+                                <option key={co.id} value={co.id}>{co.companyName}</option>
                             ))}
-                        </select>
-                    </div>
+                    </select>
                 </fieldset>  
 
                 <fieldset className="form--field">
-                    <div>
-                        <label htmlFor="newSubmissionForm--position">Position Applied For:</label>
-                        <input
-                            type="text"
-                            id="newSubmissionForm--position"
-                            ref={position}
-                            placeholder="Ex: Jr. Developer"
-                            required
-                        />
-                    </div>
+                    <label htmlFor="newSub--position">Position Applied For:</label>
+                    <input
+                        type="text"
+                        ref={position}
+                        placeholder="Ex: Jr. Developer"
+                        required
+                    />
                 </fieldset>
 
                 <fieldset className="form--field">
-                    <section className="dateApplied">
-                        <label htmlFor="newSubmissionForm--dateApplied">Date Applied:</label>
-                        <div 
-                            id="newSubmissionForm--dateApplied"
-                            required 
-                            ref={date}>
-                                {<DatePicker placeholderText="Click to select a date"
-                                adjustDateOnChange
-                                selected={props.dateApplied} onChange={handleChange} />}
-                        </div>
-                    </section>
+                    <label htmlFor="newSub--date">Date Applied:</label>
+                    <div 
+                        required 
+                        ref={date}>
+                            {<DatePicker 
+                                placeholderText="Click to select a date"
+                                selected={props.dateApplied} 
+                                onChange={handleChange} />}
+                    </div>
                 </fieldset>
 
-                <div>
-                    <Button color="info" size="sm" className="form--field" type="submit" onClick={evt => {
-                        evt.preventDefault()
-                        constructNewSubmission()}}>
+                <div className="form--field">
+                    <Button 
+                        id="newSub--submitBtn"
+                        type="submit" 
+                        color="info" 
+                        size="sm"  
+                        onClick={evt => {
+                            evt.preventDefault()
+                            constructNewSubmission()}}
+                        >
                         Submit
                     </Button>
                 </div>  

@@ -17,7 +17,7 @@ export default (props) => {
 
             <Modal isOpen={modal} toggle={toggle}>
                     <ModalHeader toggle={toggle}>
-                        <h4>Follow-Up Action Items</h4>
+                        <p className="form--heading">Target Practice:</p>
                     </ModalHeader>
                     <ModalBody>
                         <TaskList toggler={toggle} />

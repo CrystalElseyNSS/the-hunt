@@ -1,32 +1,42 @@
+.submissionForm {
+    border: 1px solid lightgray;
+    margin: 10px;
+}
+
+.submissionList {
+    border: 1px solid lightgray;
+    margin: 30px 10px;
+    padding: 5px;
+}
+
+.submission {
+    line-height: 30px;
+    margin: 10px;
+    padding: 10px;
+}
+
+.submission__header {
+    margin: 10px auto 20px auto;
+    text-align: center;
+}
+
+.form--heading {
+    color: #23b0b6;
+    font-size: 30px;
+    font-weight: bolder;
+    text-transform: uppercase;
+}
+
 .form--field {
     margin: 10px;
     padding: 5px;
 }
 
-.dateApplied {
-    display: flex;
-    flex-wrap: wrap;
-    
+label {
+    display: block;
 }
 
-.submissionContainer {
-    border: 1px solid lightgray;
+input {
+    display: block;
+    width: 25rem;
 }
-
-.submission__form {
-    border: 1px solid lightgray;
-    margin: 10px;
-}
-
-.submission__list {
-    border: 1px solid lightgray;
-    margin: 10px;
-}
-
-.submission {
-    border: 1px solid lightgray;
-    margin: 10px;
-    padding: 5px;
-}
-
-
