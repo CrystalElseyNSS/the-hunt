@@ -6,6 +6,7 @@ import SubmissionList from "./submissions/SubmissionList"
 import { CompanyProvider } from "./companies/CompanyProvider"
 import CompanyForm from "./companies/CompanyForm"
 
+
 export const Dashboard = () => {
 
     return (
@@ -31,6 +32,7 @@ export const Dashboard = () => {
                             <SubmissionList />
                         </SubmissionProvider>                   
                     </div> 
+                    
                 </section>
 
                 <section className="alertContainer"></section>   
