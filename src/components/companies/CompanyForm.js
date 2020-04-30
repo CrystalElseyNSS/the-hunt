@@ -1,7 +1,7 @@
 import React, { useContext, useRef } from "react"
 import { CompanyContext } from "../companies/CompanyProvider"
 import { Button } from "reactstrap"
-import "./Company.css"
+import "../submissions/Submission.css"
 
 export default props => {
 
@@ -22,28 +22,37 @@ export default props => {
 
     return (
         <>
-            <form className="newCompanyForm">
+            <form className="form__newCompany">
+            
+                <header className="submission__header">
+                    <p className="form--heading">Submit New Job</p>
+                </header>
 
-             <fieldset className="form--field">
-                    <div>
-                        <label htmlFor="newCompany--name">Add New Company: </label>
-                        <input
-                            type="text"
-                            id="newCompany--name"
-                            ref={companyName}
-                            placeholder="Ex: Lonely Planet"
-                            autoFocus
-                        />
-                    </div>
-                    <div>
-                        <Button size="sm" color="info" type="submit" onClick={evt => {
+                <fieldset className="form--field">
+                    <div><label htmlFor="newCo--name">Add New Company:</label></div>
+                    <div><input
+                        id="newCo--name"
+                        type="text"
+                        ref={companyName}
+                        placeholder="Ex: Lonely Planet"
+                        autoFocus
+                    /></div>
+                </fieldset>
+
+                <div className="form--field">
+                    <Button 
+                        type="submit" 
+                        id="newCo--saveBtn"
+                        size="sm" 
+                        color="info" 
+                        onClick={evt => {
                             evt.preventDefault()
                             constructNewCompany()
-                            }}>
-                            Save
-                        </Button>
-                    </div>
-                </fieldset>
+                        }}
+                    >
+                        Save
+                    </Button>
+                </div>
 
             </form>
         </>

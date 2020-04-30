@@ -1,0 +1,19 @@
+.task--heading {
+    color: #23b0b6;
+    font-size: 18px;
+}
+
+.task {
+    border: 1px solid lightgray;
+    margin: 10px;
+    padding: 20px 10px 10px 10px;
+}
+
+.interviewFilter {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.interview--select {
+    margin-left: 30px;
+}

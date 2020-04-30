@@ -18,24 +18,23 @@ export const Dashboard = () => {
                     <div className="logo"></div>
                 </header>
 
-                <section className="submissionContainer">
-                    <div className="submission__form">
+                <article className="submissionContainer">
+                    <section className="submissionForm">
                         <SubmissionProvider>
                             <CompanyProvider>
                                     <CompanyForm />
                                     <SubmissionForm />
                             </CompanyProvider>
                         </SubmissionProvider>
-                    </div>
-                    <div className="submission__list">
+                    </section>
+                    <section className="submissionList">
                         <SubmissionProvider>
                             <SubmissionList />
                         </SubmissionProvider>                   
-                    </div> 
-                    
-                </section>
+                    </section> 
+                </article>
 
-                <section className="alertContainer"></section>   
+                <article className="alertContainer"></article>   
 
             </main>
         </>
