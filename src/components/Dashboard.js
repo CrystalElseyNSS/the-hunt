@@ -11,32 +11,29 @@ export const Dashboard = () => {
 
     return (
         <>
-            
-        
-            <main className="mainContainer">
-                <header className="headerContainer">
-                    <div className="logo"></div>
-                </header>
+            <SubmissionProvider>
+                <main className="mainContainer">
 
-                <article className="submissionContainer">
-                    <section className="submissionForm">
-                        <SubmissionProvider>
-                            <CompanyProvider>
-                                    <CompanyForm />
-                                    <SubmissionForm />
-                            </CompanyProvider>
-                        </SubmissionProvider>
-                    </section>
-                    <section className="submissionList">
-                        <SubmissionProvider>
+                    <header className="headerContainer">
+                        <div className="logo"></div>
+                    </header>
+
+                    <article className="submissionContainer">
+                        <section className="submissionForm">
+                                <CompanyProvider>
+                                        <CompanyForm />
+                                        <SubmissionForm />
+                                </CompanyProvider>
+                        </section>
+                        <section className="submissionList">
                             <SubmissionList />
-                        </SubmissionProvider>                   
-                    </section> 
-                </article>
+                        </section> 
+                    </article>
 
-                <article className="alertContainer"></article>   
-
-            </main>
+                    <article className="alertContainer"></article>   
+                    
+                </main>
+            </SubmissionProvider>
         </>
     )
 }
