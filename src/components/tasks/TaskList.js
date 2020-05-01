@@ -8,7 +8,7 @@ export default () => {
             <article className="taskContainer">
 
                 <section className="applicationTasks">
-                    <heading className="task--heading">Great shot! Time to Follow Up...</heading>
+                    <header className="task--heading">Great shot! Time to Follow Up...</header>
 
                     <div className="task">
                         <p>
@@ -35,13 +35,9 @@ export default () => {
               
                 <section className="interviewTasks">
                     
-                    <heading className="task--heading">
+                    <header className="task--heading">
                         <p>Have you scheduled an interview?</p>   
-                        <select defaultValue="">
-                            <option>Yes</option>
-                            <option>No</option>
-                        </select>
-                    </heading>
+                    </header>
                 
 
                     <div className="task">
@@ -60,13 +56,9 @@ export default () => {
                         </p>
                     </div>
 
-                    <heading className="task--heading">
+                    <header className="task--heading">
                         <p>Have you had your interview?</p>   
-                        <select defaultValue="">
-                            <option>Yes</option>
-                            <option>No</option>
-                        </select>
-                    </heading>
+                    </header>
 
                     <div className="task">
                         <p>
