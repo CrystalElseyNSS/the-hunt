@@ -1,4 +1,4 @@
-import React, { useContext } from "react"
+import React, { useContext, useEffect, useState } from "react"
 import { SubmissionContext } from "./SubmissionProvider"
 import Submission from "./Submission"
 import "./Submission.css"
@@ -6,7 +6,13 @@ import "./Submission.css"
 export default () => {
     const { submissions } = useContext(SubmissionContext)
     let activeUser = parseInt(sessionStorage.getItem("user"))
-    const activeUserSubmissions = submissions.filter(sub => sub.userId === activeUser)
+    
+    const [userSubmissions, setUserSubmissions] = useState([])
+    useEffect(() => {
+        const activeUserSubmissions = submissions.filter(sub => sub.userId === activeUser)
+        setUserSubmissions(activeUserSubmissions)
+        }, [submissions]
+    )
 
     return (
         <>
@@ -15,7 +21,7 @@ export default () => {
             </header>
                 
             <section>                    
-                {activeUserSubmissions.map(sub => {
+                {userSubmissions.map(sub => {
                     return <Submission key={sub.id} value={sub.id} submission={sub} />
                 })}
             </section>
