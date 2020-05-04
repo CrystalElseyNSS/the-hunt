@@ -3,6 +3,7 @@ import DatePicker from "react-datepicker"
 import { Button } from "reactstrap"
 import { CompanyContext } from "../companies/CompanyProvider"
 import { SubmissionContext } from "./SubmissionProvider"
+import { format } from "date-fns"
 import "react-datepicker/dist/react-datepicker.css"
 import "./Submission.css"
 
@@ -15,8 +16,8 @@ export default props => {
     const date = useRef()
     let activeUser = parseInt(sessionStorage.getItem("user"))
     const thisUsersCompanies = companies.filter(co => co.userId === activeUser)
-    const [dateApplied, setApplicationDate] = useState(new Date())
-    const handleChange = (dateEntered => setApplicationDate(dateEntered))
+    const [dateApplied, setApplicationDate] = useState(null)
+    
 
     const constructNewSubmission = () => {
         const companyId = parseInt(company.current.value)
@@ -27,7 +28,7 @@ export default props => {
             addSubmission({
                 companyName: foundCompany,
                 position: position.current.value,
-                dateApplied: dateApplied,
+                dateApplied: format(dateApplied, "MM/dd/yyy"),
                 userId: activeUser
             })
             .then(setApplicationDate)
@@ -70,8 +71,8 @@ export default props => {
                         ref={date}>
                             {<DatePicker 
                                 placeholderText="Click to select a date"
-                                selected={props.dateApplied} 
-                                onChange={handleChange} />}
+                                selected={dateApplied} 
+                                onChange={(dateEntered => setApplicationDate(dateEntered))} />}
                     </div>
                 </fieldset>
 
