@@ -6,7 +6,6 @@ import "./Submission.css"
 export default () => {
     const { submissions } = useContext(SubmissionContext)
     let activeUser = parseInt(sessionStorage.getItem("user"))
-    
     const [userSubmissions, setUserSubmissions] = useState([])
 
     useEffect(() => {
