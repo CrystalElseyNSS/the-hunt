@@ -22,6 +22,24 @@ export const SubmissionProvider = (props) => {
             .then(getSubmissions)
     }
 
+    const updateSubmission = submission => {
+        return fetch(`http://localhost:8080/submissions/${submission.id}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(submission)
+        })
+            .then(getSubmissions)
+    }
+
+    const deleteSubmission = submissionId => {
+        return fetch(`http://localhost:8080/submissions/${submissionId}`, {
+            method: "DELETE"
+        })
+            .then(getSubmissions)
+    }
+
     useEffect(() => {
         getSubmissions()
     }, [])
@@ -32,7 +50,7 @@ export const SubmissionProvider = (props) => {
 
     return (
         <SubmissionContext.Provider value={{
-            submissions, addSubmission
+            submissions, addSubmission, deleteSubmission, updateSubmission
         }}>
             {props.children}
         </SubmissionContext.Provider>
