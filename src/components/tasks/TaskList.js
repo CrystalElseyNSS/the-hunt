@@ -1,89 +1,27 @@
-import React from "react"
-import "./Task.css"
+import React, { useContext } from "react"
+import { SubmissionContext } from "../submissions/SubmissionProvider"
+import { TaskContext } from "./TaskProvider"
+import { SubmissionTaskContext } from "../submissionTasks/SubmissionTasksProvider"
+import Task from "./Task"
 
 export default () => {
 
+    const { submissions } = useContext(SubmissionContext)
+    const { tasks } = useContext(TaskContext)
+    const { submissionTasks } = useContext(SubmissionTaskContext)
+
+    let activeUser = parseInt(sessionStorage.getItem("user"))
+    const thisUsersSubmissions = submissions.filter(sub => sub.userId === activeUser)
+    const submissionTaskRelationships = submissionTasks.map(subTask => thisUsersSubmissions.filter(userSub => userSub.id === subTask.submissionId)).flat()
+    const thisUsersTasksforThisSubmission = tasks.map(task => submissionTaskRelationships.filter(rel => rel.taskId === task.id))
+    
     return (
         <>
-            <article className="taskContainer">
-
-                <section className="applicationTasks">
-                    <header className="task--heading">Great shot! Time to Follow Up...</header>
-
-                    <div className="task">
-                        <p>
-                            <span role="img" aria-label="bow">🏹 </span>
-                            Send an email to follow up on your application
-                        </p>
-                        <p>
-                            <span role="img" aria-label="target">🎯 </span>
-                            Due 5 business days after application submission
-                        </p>
-                    </div>
-
-                    <div className="task">
-                        <p>
-                            <span role="img" aria-label="bow">🏹 </span>
-                            Call the hiring manager to follow up on your application</p>
-                        <p>
-                            <span role="img" aria-label="target">🎯 </span>
-                            Due 10 business days after application submission
-                        </p>
-                    </div>
-                </section>
-                
-              
-                <section className="interviewTasks">
-                    
-                    <header className="task--heading">
-                        <p>Have you scheduled an interview?</p>   
-                    </header>
-                
-
-                    <div className="task">
-                        <p>
-                            <span role="img" aria-label="bow">🏹 </span>
-                            Prepare for your interview:
-                        </p>
-                        <ul>
-                            <li>Research the company</li>
-                            <li>Prepare a list of questions for the interviewer</li>
-                            <li>Prepare answers for commonly asked interview questions</li>
-                        </ul>
-                        <p>
-                            <span role="img" aria-label="target">🎯 </span>
-                            Due 2 business days before your interview
-                        </p>
-                    </div>
-
-                    <header className="task--heading">
-                        <p>Have you had your interview?</p>   
-                    </header>
-
-                    <div className="task">
-                        <p>
-                            <span role="img" aria-label="bow">🏹 </span>
-                            Send a thank you email to the interviewer and/or recruiter
-                        </p>
-                        <p>
-                            <span role="img" aria-label="target">🎯 </span>
-                            Due 1 business day after your interview
-                        </p>
-                    </div>
-
-                    <div className="task">
-                        <p>
-                            <span role="img" aria-label="bow">🏹 </span>
-                            Follow up on the status of the position
-                        </p>
-                        <p>
-                            <span role="img" aria-label="target">🎯 </span>
-                            Due 5 days after your interview
-                        </p>
-                    </div>
-                </section>
-
-            </article>
+            <section>                    
+                {thisUsersTasksforThisSubmission.map(task => {
+                    return <Task key={task.id} value={task.id} task={task} />
+                })}
+            </section>
         </>
-    )
+    )   
 }

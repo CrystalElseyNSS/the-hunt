@@ -11,7 +11,6 @@ export default () => {
     useEffect(() => {
         const activeUserSubmissions = submissions.filter(sub => sub.userId === activeUser)
         setUserSubmissions(activeUserSubmissions)
-
     }, [submissions])
 
     return (
