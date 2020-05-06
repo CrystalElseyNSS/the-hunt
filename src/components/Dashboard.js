@@ -12,27 +12,27 @@ export const Dashboard = () => {
     return (
         <>
             <SubmissionProvider>
-                <main className="mainContainer">
+                <CompanyProvider>
+                    <main className="mainContainer">
 
-                    <header className="headerContainer">
-                        <div className="logo"></div>
-                    </header>
+                        <header className="headerContainer">
+                            <div className="logo"></div>
+                        </header>
 
-                    <article className="submissionContainer">
-                        <section className="submissionForm">
-                                <CompanyProvider>
-                                        <CompanyForm />
-                                        <SubmissionForm />
-                                </CompanyProvider>
-                        </section>
-                        <section className="submissionList">
-                            <SubmissionList />
-                        </section> 
-                    </article>
+                        <article className="submissionContainer">
+                            <section className="submissionForm">
+                                <CompanyForm />
+                                <SubmissionForm />
+                            </section>
+                            <section className="submissionList">
+                                <SubmissionList />
+                            </section> 
+                        </article>
 
-                    <article className="alertContainer"></article>   
-                    
-                </main>
+                        <article className="alertContainer"></article>   
+                        
+                    </main>
+                </CompanyProvider>
             </SubmissionProvider>
         </>
     )

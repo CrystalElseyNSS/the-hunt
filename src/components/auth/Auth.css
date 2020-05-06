@@ -1,8 +1,3 @@
-.authContainer {
-    margin: auto;
-    width: 450px;
-}
-
 .logo {
     background-image: url(Logo.png);
     background-repeat: no-repeat;
@@ -10,4 +5,13 @@
     width: 400px;
     height: 400px;
     margin: auto;
+}
+
+.authContainer {
+    margin: auto;
+    width: 450px;
+}
+
+.loginContainer {
+    margin-bottom: 50px;
 }

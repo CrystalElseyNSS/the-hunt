@@ -18,15 +18,13 @@ export default props => {
     const thisUsersCompanies = companies.filter(co => co.userId === activeUser)
     const [dateApplied, setApplicationDate] = useState(null)
     
-
     const constructNewSubmission = () => {
         const companyId = parseInt(company.current.value)
-        const foundCompany = companies.find(co => co.id === companyId).companyName
         if (companyId === 0) {
             window.alert("Please enter a new company, or select an existing company from the dropdown")
         } else {
             addSubmission({
-                companyName: foundCompany,
+                companyId: parseInt(company.current.value),
                 position: position.current.value,
                 dateApplied: format(dateApplied, "MM/dd/yyy"),
                 userId: activeUser

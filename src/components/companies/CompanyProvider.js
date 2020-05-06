@@ -22,6 +22,17 @@ export const CompanyProvider = (props) => {
             .then(getCompanies)
     }
 
+    const updateCompany = company => {
+        return fetch(`http://localhost:8080/companies/${company.id}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(company)
+        })
+            .then(getCompanies)
+    }
+
     useEffect(() => {
         getCompanies()
     }, [])
@@ -32,7 +43,7 @@ export const CompanyProvider = (props) => {
 
     return (
         <CompanyContext.Provider value={{
-            companies, addCompany
+            companies, addCompany, updateCompany
         }}>
             {props.children}
         </CompanyContext.Provider>
