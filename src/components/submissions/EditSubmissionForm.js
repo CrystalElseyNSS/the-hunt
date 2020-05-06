@@ -1,63 +1,64 @@
 import React, { useContext, useState } from "react"
 import { Button } from "reactstrap"
 // import DatePicker from "react-datepicker"
-import { format } from "date-fns"
+// import { format } from "date-fns"
 import { SubmissionContext } from "./SubmissionProvider"
-// import { CompanyContext } from "../companies/CompanyProvider"
+import { CompanyContext } from "../companies/CompanyProvider"
 
-export const EditSubmissionForm = ({ submission, toggleEdit }) => {
+export const EditSubmissionForm = ({ selectedSubmission, toggleEdit }) => {
    
-    // const { companies } = useContext(CompanyContext)
+    const { companies } = useContext(CompanyContext)
     const { updateSubmission } = useContext(SubmissionContext)
-    const [ updatedSubmission, setSubmission ] = useState(submission)
-    // let activeUser = parseInt(sessionStorage.getItem("user"))
-    // const thisUsersCompanies = companies.filter(co => co.userId === activeUser)
+    const [ updatedSubmission, setSubmission ] = useState(selectedSubmission)
+    let activeUser = parseInt(sessionStorage.getItem("user"))
+    const thisUsersCompanies = companies.filter(co => co.userId === activeUser)
     // const [dateApplied, setApplicationDate] = useState(null)
 
     const handleSubmissionChange = (event) => {
         const newSubmission = Object.assign({}, updatedSubmission)
         newSubmission[event.target.name] = event.target.value
         setSubmission(newSubmission)
+        console.log(updatedSubmission)
     }
-
+  
     const editSubmission = () => {
-        const companyId = parseInt(updatedSubmission.companyId)
-        if (companyId === 0) {
-            window.alert("Please select a company")
-        } else {
-            updateSubmission({
-                // companyName: updatedSubmission.companyName,
-                position: updatedSubmission.position,
-                // dateApplied: format(updatedSubmission.dateApplied, "MM/dd/yyy"),
-                userId: parseInt(sessionStorage.getItem("user")),
-                id: updatedSubmission.id
-            })
-            .then(toggleEdit)
-        }
+        const companyId = parseInt(updatedSubmission.companyName)
+        const foundCompany = companies.find(co => co.id === companyId)
+        
+        updateSubmission({
+            companyName: foundCompany,
+            position: updatedSubmission.position,
+            // dateApplied: format(dateApplied, "MM/dd/yyy"),
+            userId: activeUser,
+            id: updatedSubmission.id
+        })
+        .then(toggleEdit)
     }
-
+    // }
     return (
 
         <form className="form__editSubmission">
 
-            {/* <fieldset className="form--field">
+            <fieldset className="form--field">
                 <select
-                    defaultValue=""
-                    name="editSub--company"
-                    required                        
+                    defaultValue={selectedSubmission.companyName}
+                    name="companyName"
+                    required   
+                    onChange={handleSubmissionChange}                     
                 >
                     <option>Select a Company</option>
                         {thisUsersCompanies.map(co => (
                             <option key={co.id} value={co.id}>{co.companyName}</option>
                         ))}
                 </select>
-            </fieldset>   */}
+            </fieldset>  
 
             <fieldset className="form--field">
                 <label htmlFor="editSub--position">Position Applied For:</label>
                 <input
+                    name="position"
                     type="text"
-                    placeholder="Ex: Jr. Developer"
+                    defaultValue={selectedSubmission.position}
                     required
                     onChange={handleSubmissionChange}
                 />

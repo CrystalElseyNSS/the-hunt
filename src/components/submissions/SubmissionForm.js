@@ -18,7 +18,6 @@ export default props => {
     const thisUsersCompanies = companies.filter(co => co.userId === activeUser)
     const [dateApplied, setApplicationDate] = useState(null)
     
-
     const constructNewSubmission = () => {
         const companyId = parseInt(company.current.value)
         const foundCompany = companies.find(co => co.id === companyId).companyName

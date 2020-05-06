@@ -10,16 +10,18 @@ export default (props) => {
     const toggle = () => setModal(!modal)
     const [editModal, setEditModal] = useState(false)
     const toggleEdit = () => setEditModal(!editModal)
-    const [selectedSubmission, setSubmission] = useState({submission: {id:0}})
-
+    const [selectedSubmission, setSubmission] = useState(props.submission)
+    
     return (
         <>
-            <section className="submission">
+            <section key={props.submission.id} className="submission">
                 <div className="submission__company">Company: {props.submission.companyName}</div>
                 <div className="submission__position">Position: {props.submission.position}</div>
                 <div className="submission__dateApplied">Date Applied: {props.submission.dateApplied}</div>
                 <Button onClick={toggle} color="info" size="sm">Follow Up</Button>{' '}
-                <Button color="info" size="sm"
+                <Button 
+                    color="info" 
+                    size="sm"
                     onClick={() => {
                         setSubmission(selectedSubmission)
                         toggleEdit()}}
@@ -37,9 +39,11 @@ export default (props) => {
 
             <Modal isOpen={editModal} toggle={toggleEdit}>
                 <ModalBody>
-                    <EditSubmissionForm key={selectedSubmission.submission.id} toggleEdit={toggleEdit} {...selectedSubmission} />
+                    <EditSubmissionForm key={selectedSubmission.id} toggleEdit={toggleEdit} selectedSubmission={selectedSubmission} />
                 </ModalBody>
             </Modal>
         </>
+        
     )
+    
 }   
