@@ -1,7 +1,6 @@
-import React, { useContext, useState } from "react"
+import React, { useContext, useState, useEffect } from "react"
 import { Button } from "reactstrap"
-// import DatePicker from "react-datepicker"
-// import { format } from "date-fns"
+import DatePicker from "react-datepicker"
 import { SubmissionContext } from "./SubmissionProvider"
 import { CompanyContext } from "../companies/CompanyProvider"
 
@@ -9,32 +8,33 @@ export const EditSubmissionForm = ({ selectedSubmission, toggleEdit }) => {
    
     const { companies } = useContext(CompanyContext)
     const { updateSubmission } = useContext(SubmissionContext)
-    const [ updatedSubmission, setSubmission ] = useState(selectedSubmission)
     let activeUser = parseInt(sessionStorage.getItem("user"))
     const thisUsersCompanies = companies.filter(co => co.userId === activeUser)
-    // const [dateApplied, setApplicationDate] = useState(null)
+    const [dateApplied, setApplicationDate] = useState(null)
+    const [ updatedSubmission, setSubmission ] = useState(selectedSubmission)
+
+    useEffect(() => {
+        setApplicationDate(updatedSubmission.dateApplied)
+    }, [])
 
     const handleSubmissionChange = (event) => {
         const newSubmission = Object.assign({}, updatedSubmission)
         newSubmission[event.target.name] = event.target.value
         setSubmission(newSubmission)
-        console.log(updatedSubmission)
     }
   
     const editSubmission = () => {
-        const companyId = parseInt(updatedSubmission.companyName)
-        const foundCompany = companies.find(co => co.id === companyId)
         
         updateSubmission({
-            companyName: foundCompany,
+            companyId: parseInt(updatedSubmission.companyId),
             position: updatedSubmission.position,
-            // dateApplied: format(dateApplied, "MM/dd/yyy"),
+            dateApplied: dateApplied,
             userId: activeUser,
             id: updatedSubmission.id
         })
         .then(toggleEdit)
     }
-    // }
+    
     return (
 
         <form className="form__editSubmission">
@@ -42,7 +42,7 @@ export const EditSubmissionForm = ({ selectedSubmission, toggleEdit }) => {
             <fieldset className="form--field">
                 <select
                     defaultValue={selectedSubmission.companyName}
-                    name="companyName"
+                    name="companyId"
                     required   
                     onChange={handleSubmissionChange}                     
                 >
@@ -64,15 +64,14 @@ export const EditSubmissionForm = ({ selectedSubmission, toggleEdit }) => {
                 />
             </fieldset>
 
-            {/* <fieldset className="form--field">
+            <fieldset className="form--field">
                 <label htmlFor="editSub--date">Date Applied:</label>
                 <div required> 
-                        {<DatePicker 
-                            placeholderText="Click to select a date"
-                            selected={dateApplied} 
-                            onChange={(dateEntered => setApplicationDate(dateEntered).then({handleSubmissionChange}))} />}
+                    {<DatePicker 
+                        selected={new Date(dateApplied)} 
+                        onChange={(selected => setApplicationDate(selected))} />}
                 </div>
-            </fieldset> */}
+            </fieldset>
 
             <div className="form--field">
                 <Button 
