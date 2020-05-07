@@ -8,9 +8,9 @@ import "./Task.css"
 export default (props) => {
 
     const { submissions } = useContext(SubmissionContext)
-    const thisSubmission = submissions.find(sub => sub.id === props.submissionId)
-    const taskOneDueDate = format(addDays(new Date(thisSubmission.dateApplied), 7), "MM/dd/yyyy")
-    const taskTwoDueDate = format(addDays(new Date(thisSubmission.dateApplied), 14), "MM/dd/yyyy")
+    const thisSubmission = submissions.find(sub => sub.id === props.submissionId) || []
+    const taskOneDueDate = format(addDays(new Date(thisSubmission.dateApplied), 7), "MM/dd/yyyy") || ""
+    const taskTwoDueDate = format(addDays(new Date(thisSubmission.dateApplied), 14), "MM/dd/yyyy") || ""
 
     const [isCompleted, setAsCompleted] = useState(false)
     const toggleTaskOne = () => setAsCompleted(!isCompleted)

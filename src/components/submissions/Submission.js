@@ -15,13 +15,19 @@ export default (props) => {
     const toggleEdit = () => setEditModal(!editModal)
     const [selectedSubmission, setSubmission] = useState(props.submission)
     const { companies } = useContext(CompanyContext)
-    const { submissions } = useContext(SubmissionContext)
+    const { submissions, deleteSubmission } = useContext(SubmissionContext)
     const foundCompany = companies.find(co => co.id === props.submission.companyId) || {}
     const formattedAppDate = format(new Date(props.submission.dateApplied), "MM/dd/yyyy")
 
     useEffect(() => {
         const savedSubmission = submissions.find(saved => saved.id === selectedSubmission.id)
         setSubmission(savedSubmission)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [submissions])
+
+    useEffect(() => {
+        const deletedSubmission = submissions.find(deleted => deleted.id === selectedSubmission.id)
+        setSubmission(deletedSubmission)
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [submissions])
     
@@ -37,7 +43,15 @@ export default (props) => {
                     size="sm"
                     onClick={() => {
                         toggleEdit()}}
-                >Edit</Button>{' '}
+                    >Edit
+                </Button>{' '}
+                <Button 
+                    color="info" 
+                    size="sm"
+                    onClick={() => {
+                        deleteSubmission(props.submission.id)
+                    }}>Delete
+                </Button>
             </section>
 
             <Modal isOpen={modal} toggle={toggle}>
