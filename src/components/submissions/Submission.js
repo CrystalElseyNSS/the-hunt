@@ -42,7 +42,7 @@ export default (props) => {
                         <p className="form--heading">Target Practice:</p>
                     </ModalHeader>
                     <ModalBody>
-                        <TaskList toggler={toggle} />
+                        <TaskList submissionId={props.submission.id} toggler={toggle} />
                     </ModalBody>
             </Modal>  
 
