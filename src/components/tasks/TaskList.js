@@ -25,7 +25,7 @@ export default (props) => {
         <>
             <section>                    
                 {thisUsersTasksforThisSubmission.map(task => {
-                    return <Task key={task.id} task={task} />
+                    return <Task key={task.id} task={task} submissionId={props.submissionId} />
                 })}
             </section>
         </>
