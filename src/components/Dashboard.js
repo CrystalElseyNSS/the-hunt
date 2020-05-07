@@ -3,8 +3,11 @@ import "./Dashboard.css"
 import { SubmissionProvider } from "./submissions/SubmissionProvider"
 import SubmissionForm from "./submissions/SubmissionForm"
 import SubmissionList from "./submissions/SubmissionList"
+import InterviewList from "./interviews/InterviewList"
+import InterviewForm from "./interviews/InterviewForm"
 import { CompanyProvider } from "./companies/CompanyProvider"
 import { SubmissionTaskProvider } from "./submissionTasks/SubmissionTasksProvider"
+import { InterviewProvider } from "./interviews/InterviewProvider"
 import CompanyForm from "./companies/CompanyForm"
 
 
@@ -15,25 +18,34 @@ export const Dashboard = () => {
             <SubmissionProvider>
                 <CompanyProvider>
                         <SubmissionTaskProvider>
-                    <main className="mainContainer">
+                            <InterviewProvider>
+                                <main className="mainContainer">
 
-                        <header className="headerContainer">
-                            <div className="logo"></div>
-                        </header>
+                                    <header className="headerContainer">
+                                        <div className="logo"></div>
+                                    </header>
 
-                        <article className="submissionContainer">
-                            <section className="submissionForm">
-                                <CompanyForm />
-                                <SubmissionForm />
-                            </section>
-                            <section className="submissionList">
-                                <SubmissionList />
-                            </section> 
-                        </article>
+                                    <article className="submissionContainer">
+                                        <section className="submissionForm">
+                                            <CompanyForm />
+                                            <SubmissionForm />
+                                        </section>
+                                        <section className="submissionList">
+                                            <SubmissionList />
+                                        </section> 
+                                    </article>
 
-                        <article className="alertContainer"></article>   
-                        
-                    </main>
+                                    <article className="interviewContainer">
+                                        <section>
+                                            <InterviewForm />
+                                        </section>
+                                        <section className="interviewList">
+                                            <InterviewList />
+                                        </section>
+                                    </article>   
+                                    
+                                </main>
+                        </InterviewProvider>
                     </SubmissionTaskProvider>
                 </CompanyProvider>
             </SubmissionProvider>
