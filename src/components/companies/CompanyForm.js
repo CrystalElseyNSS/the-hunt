@@ -25,7 +25,7 @@ export default props => {
             <form className="form__newCompany">
             
                 <header className="submission__header">
-                    <p className="form--heading">Submit New Job</p>
+                    <p className="form--heading">Log New Job</p>
                 </header>
 
                 <fieldset className="form--field">
