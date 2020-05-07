@@ -20,6 +20,7 @@ export default (props) => {
     useEffect(() => {
         const savedSubmission = submissions.find(saved => saved.id === selectedSubmission.id)
         setSubmission(savedSubmission)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [submissions])
     
     return (
@@ -42,7 +43,7 @@ export default (props) => {
                         <p className="form--heading">Target Practice:</p>
                     </ModalHeader>
                     <ModalBody>
-                        <TaskList toggler={toggle} />
+                        <TaskList submissionId={props.submission.id} toggler={toggle} />
                     </ModalBody>
             </Modal>  
 

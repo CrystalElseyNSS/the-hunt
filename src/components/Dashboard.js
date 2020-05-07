@@ -4,6 +4,8 @@ import { SubmissionProvider } from "./submissions/SubmissionProvider"
 import SubmissionForm from "./submissions/SubmissionForm"
 import SubmissionList from "./submissions/SubmissionList"
 import { CompanyProvider } from "./companies/CompanyProvider"
+import { TaskProvider } from "./tasks/TaskProvider"
+import { SubmissionTaskProvider } from "./submissionTasks/SubmissionTasksProvider"
 import CompanyForm from "./companies/CompanyForm"
 
 
@@ -13,6 +15,8 @@ export const Dashboard = () => {
         <>
             <SubmissionProvider>
                 <CompanyProvider>
+                    <TaskProvider>
+                        <SubmissionTaskProvider>
                     <main className="mainContainer">
 
                         <header className="headerContainer">
@@ -32,6 +36,8 @@ export const Dashboard = () => {
                         <article className="alertContainer"></article>   
                         
                     </main>
+                    </SubmissionTaskProvider>
+                    </TaskProvider>
                 </CompanyProvider>
             </SubmissionProvider>
         </>

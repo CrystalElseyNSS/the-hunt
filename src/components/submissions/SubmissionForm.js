@@ -3,7 +3,6 @@ import DatePicker from "react-datepicker"
 import { Button } from "reactstrap"
 import { CompanyContext } from "../companies/CompanyProvider"
 import { SubmissionContext } from "./SubmissionProvider"
-import { format } from "date-fns"
 import "react-datepicker/dist/react-datepicker.css"
 import "./Submission.css"
 
@@ -26,7 +25,7 @@ export default props => {
             addSubmission({
                 companyId: parseInt(company.current.value),
                 position: position.current.value,
-                dateApplied: format(dateApplied, "MM/dd/yyy"),
+                dateApplied: dateApplied,
                 userId: activeUser
             })
             .then(setApplicationDate)

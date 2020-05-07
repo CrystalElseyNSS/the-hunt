@@ -11,7 +11,7 @@ export default () => {
     useEffect(() => {
         const activeUserSubmissions = submissions.filter(sub => sub.userId === activeUser)
         setUserSubmissions(activeUserSubmissions)
-
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [submissions])
 
     return (
