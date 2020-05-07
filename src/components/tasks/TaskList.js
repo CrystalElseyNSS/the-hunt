@@ -11,25 +11,15 @@ export default (props) => {
     const { submissionTasks } = useContext(SubmissionTaskContext)
     const [thisUsersTasksforThisSubmission, setUsersTasks] = useState([])
     
-
     useEffect(() => {
-    
-        // Iterate submissions. 
-        
-            // For each one, filter submission tasks.
-            const tasksForThisSubmission = submissionTasks.filter(subTask => subTask.submissionId === props.submissionId)
-    
-            // Iterate submission tasks and find related task object.
-            const userSubmissionTasks = tasksForThisSubmission.map(subTask => {
-                const foundTask = tasks.find(task => subTask.taskId === task.id)
-                return foundTask
-            })
-            setUsersTasks(userSubmissionTasks)
-    
-       
+        const tasksForThisSubmission = submissionTasks.filter(subTask => subTask.submissionId === props.submissionId)
+        const userSubmissionTasks = tasksForThisSubmission.map(subTask => {
+            const foundTask = tasks.find(task => subTask.taskId === task.id)
+            return foundTask
+        })
+        setUsersTasks(userSubmissionTasks)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [submissions, tasks, submissionTasks])
-
-
 
     return (
         <>

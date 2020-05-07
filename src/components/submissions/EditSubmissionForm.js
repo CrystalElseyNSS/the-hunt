@@ -15,6 +15,7 @@ export const EditSubmissionForm = ({ selectedSubmission, toggleEdit }) => {
 
     useEffect(() => {
         setApplicationDate(updatedSubmission.dateApplied)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     const handleSubmissionChange = (event) => {

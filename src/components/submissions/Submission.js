@@ -20,6 +20,7 @@ export default (props) => {
     useEffect(() => {
         const savedSubmission = submissions.find(saved => saved.id === selectedSubmission.id)
         setSubmission(savedSubmission)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [submissions])
     
     return (
