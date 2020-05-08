@@ -1,4 +1,5 @@
-.mainContainer {
+.headerContainer {
+    display: block;
     margin: auto;
     width: 450px;
 }
@@ -7,7 +8,22 @@
     background-image: url(Logo.png);
     background-repeat: no-repeat;
     background-size: cover;
-    width: 400px;
-    height: 400px;
+    width: 450px;
+    height: 450px;
     margin: auto;
+}
+
+.mainContainer {
+    display: flex;
+    flex-wrap: wrap;
+    width: 900px;
+    margin: auto;
+}
+
+.submissionContainer {
+    width: 450px;
+}
+
+.interviewContainer {
+    width: 450px;
 }
