@@ -16,6 +16,11 @@ export default props => {
     let activeUser = parseInt(sessionStorage.getItem("user"))
     const thisUsersCompanies = companies.filter(co => co.userId === activeUser)
     const [dateApplied, setApplicationDate] = useState(null)
+
+    const handleInputChange = () => {
+        company.current.value = "Select a Company"
+        position.current.value = ""
+    }
     
     const constructNewSubmission = () => {
         const companyId = parseInt(company.current.value)
@@ -81,7 +86,9 @@ export default props => {
                         size="sm"  
                         onClick={evt => {
                             evt.preventDefault()
-                            constructNewSubmission()}}
+                            constructNewSubmission()
+                            handleInputChange()
+                        }}
                         >
                         Submit
                     </Button>
