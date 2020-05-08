@@ -20,6 +20,16 @@ export default props => {
     let activeUser = parseInt(sessionStorage.getItem("user"))
     const thisUsersCompanies = companies.filter(co => co.userId === activeUser)
     const [interviewDate, setInterviewDate] = useState(null)
+
+
+
+   
+    const handleInterviewChange = () => {
+        company.current.value = "Select a Company"
+        contact.current.value = ""
+        email.current.value = ""
+        title.current.value = ""
+    }
     
     const constructNewInterview = () => {
         const companyId = parseInt(company.current.value)
@@ -53,7 +63,7 @@ export default props => {
                         defaultValue=""
                         name="newInt--company"
                         ref={company}
-                        required                        
+                        required                     
                     >
                         <option>Select a Company</option>
                             {thisUsersCompanies.map(co => (
@@ -67,7 +77,7 @@ export default props => {
                     <input
                         type="text"
                         ref={contact}
-                        placeholder="Ex: Thomas Green"
+                        placeholder="Ex: Thomas Green" 
                         required
                     />
                 </fieldset>
@@ -87,7 +97,7 @@ export default props => {
                     <input
                         type="text"
                         ref={email}
-                        placeholder="Jane@thiscompany.com"
+                        placeholder="Jane@thiscompany.com"  
                         required
                     />
                 </fieldset>
@@ -108,10 +118,7 @@ export default props => {
                     <label htmlFor="newInt--time">Time:</label>
                     <input
                         type="time"
-                        id="newInt--time"
-                        name="time"
                         ref={time}
-                        placeholder="3:00 pm"
                         required
                     />
                 </fieldset>
@@ -124,7 +131,8 @@ export default props => {
                         size="sm"  
                         onClick={evt => {
                             evt.preventDefault()
-                            constructNewInterview()}}
+                            constructNewInterview()
+                            handleInterviewChange()}}
                         >
                         Save
                     </Button>

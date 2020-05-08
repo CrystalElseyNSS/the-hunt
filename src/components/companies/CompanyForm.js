@@ -9,6 +9,10 @@ export default props => {
     const companyName = useRef()
     let activeUser = parseInt(sessionStorage.getItem("user"))
 
+    const handleInputChange = () => {
+        companyName.current.value = ""
+    }
+
     const constructNewCompany = () => {
         if (companyName !== "") {
             
@@ -48,6 +52,7 @@ export default props => {
                         onClick={evt => {
                             evt.preventDefault()
                             constructNewCompany()
+                            handleInputChange()
                         }}
                     >
                         Save
