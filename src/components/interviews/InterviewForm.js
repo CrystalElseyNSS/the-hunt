@@ -21,9 +21,6 @@ export default props => {
     const thisUsersCompanies = companies.filter(co => co.userId === activeUser)
     const [interviewDate, setInterviewDate] = useState(null)
 
-
-
-   
     const handleInterviewChange = () => {
         company.current.value = "Select a Company"
         contact.current.value = ""
