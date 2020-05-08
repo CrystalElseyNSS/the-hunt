@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from "react"
 import { Button } from "reactstrap"
-// import DatePicker from "react-datepicker"
+import DatePicker from "react-datepicker"
 import { InterviewContext } from "./InterviewProvider"
 import { CompanyContext } from "../companies/CompanyProvider"
 
@@ -34,7 +34,6 @@ export const EditInterviewForm = ({ selectedInterview, toggleEdit }) => {
             userId: activeUser,
             id: updatedInterview.id
         })
-        .then(setInterviewDate)
         .then(toggleEdit)
     }
     
@@ -46,8 +45,7 @@ export const EditInterviewForm = ({ selectedInterview, toggleEdit }) => {
                 <fieldset className="form--field">
                     <select
                         defaultValue={selectedInterview.companyName}
-                        name="editInt--company"
-                        required
+                        name="companyId"
                         onChange={handleInterviewChange}                  
                     >
                         <option>Select a Company</option>
@@ -56,6 +54,56 @@ export const EditInterviewForm = ({ selectedInterview, toggleEdit }) => {
                             ))}
                     </select>
                 </fieldset>  
+
+                <fieldset className="form--field">
+                    <label htmlFor="editInt--contact">Interviewer:</label>
+                    <input
+                        name="contact"
+                        type="text"
+                        defaultValue={selectedInterview.contact}
+                        onChange={handleInterviewChange}
+                    />
+                </fieldset>
+
+                <fieldset className="form--field">
+                    <label htmlFor="editInt--title">Title:</label>
+                    <input
+                        name="title"
+                        type="text"
+                        defaultValue={selectedInterview.title}
+                        onChange={handleInterviewChange}
+                    />
+                </fieldset>
+
+                <fieldset className="form--field">
+                    <label htmlFor="editInt--email">Email:</label>
+                    <input
+                        name="email"
+                        type="text"
+                        defaultValue={selectedInterview.email}
+                        onChange={handleInterviewChange}
+                    />
+                </fieldset>
+
+                <fieldset className="form--field">
+                    <label htmlFor="editInt--date">Date:</label>
+                    <div>
+                        {<DatePicker 
+                            placeholderText="Click to select a date"
+                            selected={new Date(interviewDate)} 
+                            onChange={(dateSelected => setInterviewDate(dateSelected))} />}
+                    </div>
+                </fieldset>
+
+                <fieldset className="form--field">
+                    <label htmlFor="editInt--time">Time:</label>
+                    <input
+                        type="time"
+                        name="time"
+                        defaultValue={selectedInterview.time}
+                        onChange={handleInterviewChange}
+                    />
+                </fieldset>
 
                 <div className="form--field">
                     <Button
