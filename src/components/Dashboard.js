@@ -16,39 +16,41 @@ export const Dashboard = () => {
     return (
         <>
             <SubmissionProvider>
-                <CompanyProvider>
-                        <SubmissionTaskProvider>
-                            <InterviewProvider>
-                                <main className="mainContainer">
+            <CompanyProvider>
+            <SubmissionTaskProvider>
+            <InterviewProvider>
+                                
+                <header className="headerContainer">
+                    <div className="logo"></div>
+                </header>
+                                
+                <main className="mainContainer">
 
-                                    <header className="headerContainer">
-                                        <div className="logo"></div>
-                                    </header>
+                    <article className="submissionContainer">
+                        <section className="submissionForm">
+                            <CompanyForm />
+                            <SubmissionForm />
+                        </section>
+                        <section className="submissionList">
+                            <SubmissionList />
+                        </section> 
+                    </article>
 
-                                    <article className="submissionContainer">
-                                        <section className="submissionForm">
-                                            <CompanyForm />
-                                            <SubmissionForm />
-                                        </section>
-                                        <section className="submissionList">
-                                            <SubmissionList />
-                                        </section> 
-                                    </article>
-
-                                    <article className="interviewContainer">
-                                        <section>
-                                            <InterviewForm />
-                                        </section>
-                                        <section className="interviewList">
-                                            <InterviewList />
-                                        </section>
-                                    </article>   
+                    <article className="interviewContainer">
+                        <section>
+                            <InterviewForm />
+                        </section>
+                        <section className="interviewList">
+                            <InterviewList />
+                        </section>
+                    </article>   
                                     
-                                </main>
-                        </InterviewProvider>
-                    </SubmissionTaskProvider>
-                </CompanyProvider>
-            </SubmissionProvider>
+                </main>
+
+        </InterviewProvider>
+        </SubmissionTaskProvider>
+        </CompanyProvider>
+        </SubmissionProvider>
         </>
     )
 }
