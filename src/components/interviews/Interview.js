@@ -1,6 +1,7 @@
 import React, { useState, useContext, useEffect } from "react"
 import { format } from "date-fns"
-import { Button } from "reactstrap"
+import { Button, Modal, ModalBody } from "reactstrap"
+import { EditInterviewForm } from "./EditInterviewForm"
 import { CompanyContext } from "../companies/CompanyProvider"
 import { InterviewContext } from "../interviews/InterviewProvider"
 import "./Interview.css"
@@ -12,10 +13,13 @@ export default (props) => {
     const { interviews, deleteInterview } = useContext(InterviewContext)
     const foundCompany = companies.find(co => co.id === props.interview.companyId) || {}
     const formattedIntDate = format(new Date(props.interview.date), "MM/dd/yyyy")
+    const [editModal, setEditModal] = useState(false)
+    const toggleEdit = () => setEditModal(!editModal)
 
     const [hours, minutes] = props.interview.time.split(":")
     const twelveHourCalculator = (hours % 12) || 12
     let AmOrPm = ""
+    // eslint-disable-next-line no-lone-blocks
     {hours >= 12 ? AmOrPm = " PM" : AmOrPm = " AM"}
     const formattedTime = twelveHourCalculator + ":" + minutes + AmOrPm
 
@@ -40,7 +44,13 @@ export default (props) => {
                 <div className="interview__email">Email: {props.interview.email}</div>
                 <div className="interview__date">Date: {formattedIntDate}</div>
                 <div className="interview__time">Time: {formattedTime}</div>
-
+                <Button 
+                    color="info" 
+                    size="sm"
+                    onClick={() => {
+                        toggleEdit()}}
+                    >Edit
+                </Button>{' '}
                 <Button 
                     color="info" 
                     size="sm"
@@ -50,6 +60,11 @@ export default (props) => {
                 </Button>
             </section>
 
+            <Modal isOpen={editModal} toggle={toggleEdit}>
+                <ModalBody>
+                    <EditInterviewForm key={selectedInterview.id} toggleEdit={toggleEdit} selectedInterview={selectedInterview} />
+                </ModalBody>
+            </Modal>
         </>
         
     )

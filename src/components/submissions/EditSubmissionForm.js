@@ -44,7 +44,6 @@ export const EditSubmissionForm = ({ selectedSubmission, toggleEdit }) => {
                 <select
                     defaultValue={selectedSubmission.companyName}
                     name="companyId"
-                    required   
                     onChange={handleSubmissionChange}                     
                 >
                     <option>Select a Company</option>
@@ -60,7 +59,6 @@ export const EditSubmissionForm = ({ selectedSubmission, toggleEdit }) => {
                     name="position"
                     type="text"
                     defaultValue={selectedSubmission.position}
-                    required
                     onChange={handleSubmissionChange}
                 />
             </fieldset>

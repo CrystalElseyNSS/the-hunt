@@ -27,7 +27,7 @@ export const InterviewProvider = (props) => {
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify(interview).bind
+            body: JSON.stringify(interview)
         })
             .then(getInterviews)
     }
