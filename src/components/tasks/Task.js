@@ -6,17 +6,12 @@ import { TaskContext } from "./TaskProvider"
 
 import "./Task.css"
 
-
 export default (props) => {
     const { submissions } = useContext(SubmissionContext)
     const { updateTask } = useContext(TaskContext)
     const thisSubmission = submissions.find(sub => sub.id === props.submissionId)
-
-
     const [isComplete, setAsComplete] = useState(props.task.isComplete)
     const toggleComplete = () => setAsComplete(!isComplete)
-
-    const dueDate = format(addDays(new Date(thisSubmission.dateApplied), 5), "MM/dd/yyyy")
 
     useEffect(() => {
         updateTask({
@@ -24,8 +19,21 @@ export default (props) => {
             task: props.task.task,
             isComplete: isComplete
         })
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isComplete])
+
+    const [newDueDate, setDueDate] = useState()
+
+    useEffect(() => {
+        let dueDate = thisSubmission.dateApplied
+        if (props.task.id === 1) {
+            dueDate = format(addDays(new Date(thisSubmission.dateApplied), 7), "MM/dd/yyyy")
+        } else {
+            dueDate = format(addDays(new Date(thisSubmission.dateApplied), 14), "MM/dd/yyyy")
+        }
+        return setDueDate(dueDate)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [newDueDate])
 
     return (
         <>
@@ -36,7 +44,7 @@ export default (props) => {
                 </p>
                 <p className="task__dueDate">
                     <span role="img" aria-label="target">🎯 </span>
-                    Due Date: {dueDate}</p>
+                    Due Date: {newDueDate}</p>
                 <Button 
                     color="info"
                     size="sm" 

@@ -39,7 +39,7 @@ export default (props) => {
         <>
             <section key={props.interview.id} className="interview">
                 <div className="interview__company">Company: {foundCompany.companyName}</div>
-                <div className="interview__contact">Contact: {props.interview.contact}</div>
+                <div className="interview__contact">Interviewer: {props.interview.contact}</div>
                 <div className="interview__title">Title: {props.interview.title}</div>
                 <div className="interview__email">Email: {props.interview.email}</div>
                 <div className="interview__date">Date: {formattedIntDate}</div>
