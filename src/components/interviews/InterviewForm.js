@@ -84,7 +84,7 @@ export default props => {
                     <input
                         type="text"
                         ref={title}
-                        placeholder="Sr. Project Manager"
+                        placeholder="Ex: Sr. Project Manager"
                         required
                     />
                 </fieldset>
@@ -94,7 +94,7 @@ export default props => {
                     <input
                         type="text"
                         ref={email}
-                        placeholder="Jane@thiscompany.com"  
+                        placeholder="Ex: Jane@thiscompany.com"  
                         required
                     />
                 </fieldset>
@@ -131,7 +131,7 @@ export default props => {
                             constructNewInterview()
                             handleInterviewChange()}}
                         >
-                        Save
+                        Submit
                     </Button>
                 </div>  
 

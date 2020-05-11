@@ -17,11 +17,3 @@
 .interview--select {
     margin-left: 30px;
 }
-
-.isComplete {
-    background-color: lightgray;
-    border: 1px solid lightgray;
-    color: gray;
-    margin: 10px;
-    padding: 20px 10px 10px 10px;
-}
