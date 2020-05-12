@@ -19,7 +19,15 @@ export const SubmissionProvider = (props) => {
             },
             body: JSON.stringify(submission)
         })
-            .then(getSubmissions)
+            .then((res) => {
+                const createdSubmission = res.json()
+                return createdSubmission
+            })
+            .then((res) => {
+                getSubmissions()
+                const finalSubmissionObj = res
+                return finalSubmissionObj
+            })
     }
 
     const updateSubmission = submission => {
