@@ -4,7 +4,7 @@ import { Button, Modal, ModalHeader, ModalBody } from "reactstrap"
 import { EditSubmissionForm } from "../submissions/EditSubmissionForm"
 import { CompanyContext } from "../companies/CompanyProvider"
 import { SubmissionContext } from "./SubmissionProvider"
-import MappedTaskList from "../tasks/MappedTaskList"
+import JobTaskList from "../tasks/JobTaskList"
 import "./Submission.css"
 
 export default (props) => {
@@ -59,7 +59,7 @@ export default (props) => {
                         <p className="form--heading">Target Practice:</p>
                     </ModalHeader>
                     <ModalBody>
-                        <MappedTaskList submissionId={props.submission.id} toggler={toggle} />
+                        <JobTaskList submissionId={props.submission.id} toggler={toggle} />
                     </ModalBody>
             </Modal>  
 

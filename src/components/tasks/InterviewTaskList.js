@@ -2,7 +2,7 @@ import React, { useContext, useState, useEffect } from "react"
 import { SubmissionContext } from "../submissions/SubmissionProvider"
 import { TaskContext } from "./TaskProvider"
 import { SubmissionTaskContext } from "../submissionTasks/SubmissionTasksProvider"
-import Task from "./Task"
+import Task from "./JobTask"
 
 export default (props) => {
 
