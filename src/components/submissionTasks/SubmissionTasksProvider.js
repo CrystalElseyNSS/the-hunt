@@ -45,7 +45,7 @@ export const SubmissionTaskProvider = (props) => {
         <SubmissionTaskContext.Provider value={{
             submissionTasks, addSubmissionTask, updateSubmissionTask
         }}>
-            {props.children}
+            ({props.children}
         </SubmissionTaskContext.Provider>
     )
 }
