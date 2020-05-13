@@ -22,6 +22,17 @@ export const SubmissionTaskProvider = (props) => {
             .then(getSubmissionTasks)
     }
 
+    const updateSubmissionTask = submissionTask => {
+        return fetch(`http://localhost:8080/submissionTasks/${submissionTask.id}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(submissionTask)
+        })
+            .then(getSubmissionTasks)
+    }
+
     useEffect(() => {
         getSubmissionTasks()
     }, [])
@@ -32,7 +43,7 @@ export const SubmissionTaskProvider = (props) => {
 
     return (
         <SubmissionTaskContext.Provider value={{
-            submissionTasks, addSubmissionTask
+            submissionTasks, addSubmissionTask, updateSubmissionTask
         }}>
             {props.children}
         </SubmissionTaskContext.Provider>

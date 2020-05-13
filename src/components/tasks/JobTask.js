@@ -2,27 +2,29 @@ import React, { useContext, useState, useEffect } from "react"
 import { Button } from "reactstrap"
 import { addDays, format } from "date-fns"
 import { SubmissionContext } from "../submissions/SubmissionProvider"
-import { TaskContext } from "./TaskProvider"
+
+import { SubmissionTaskContext } from "../submissionTasks/SubmissionTasksProvider"
 
 import "./Task.css"
 
 export default (props) => {
     const { submissions } = useContext(SubmissionContext)
-    const { updateTask } = useContext(TaskContext)
+    const { updateSubmissionTask, submissionTasks } = useContext(SubmissionTaskContext)
     const thisSubmission = submissions.find(sub => sub.id === props.submissionId)
-    const [isComplete, setAsComplete] = useState(props.task.isComplete)
+    const relationship = submissionTasks.find(st => st.submissionId === props.submissionId && st.taskId === props.task.id)
+    const [isComplete, setAsComplete] = useState(relationship.isComplete)
     const toggleComplete = () => setAsComplete(!isComplete)
+    const [newDueDate, setDueDate] = useState()
 
     useEffect(() => {
-        updateTask({
-            id: props.task.id,
-            task: props.task.task,
-            isComplete: isComplete
+        updateSubmissionTask({
+            submissionId: thisSubmission.id,
+            taskId: props.task.id,
+            isComplete: isComplete,
+            id: relationship.id
         })
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isComplete])
-
-    const [newDueDate, setDueDate] = useState()
 
     useEffect(() => {
         let dueDate = thisSubmission.dateApplied
@@ -48,7 +50,7 @@ export default (props) => {
                 <Button 
                     color="info"
                     size="sm" 
-                    onClick={toggleComplete}>{isComplete ? "✔️" : "Complete"}
+                    onClick={toggleComplete} >{isComplete ? "✔️" : "Complete"}
                 </Button>
             </div>
         </>
