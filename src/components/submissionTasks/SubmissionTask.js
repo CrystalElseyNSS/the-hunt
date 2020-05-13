@@ -2,10 +2,8 @@ import React, { useContext, useState, useEffect } from "react"
 import { Button } from "reactstrap"
 import { addDays, format } from "date-fns"
 import { SubmissionContext } from "../submissions/SubmissionProvider"
-
 import { SubmissionTaskContext } from "../submissionTasks/SubmissionTasksProvider"
-
-import "./Task.css"
+import "../tasks/Task.css"
 
 export default (props) => {
     const { submissions } = useContext(SubmissionContext)
@@ -30,9 +28,9 @@ export default (props) => {
         let dueDate = thisSubmission.dateApplied
         if (props.task.id === 1) {
             dueDate = format(addDays(new Date(thisSubmission.dateApplied), 7), "MM/dd/yyyy")
-        } else {
+        } else if (props.task.id === 2) {
             dueDate = format(addDays(new Date(thisSubmission.dateApplied), 14), "MM/dd/yyyy")
-        }
+        } 
         return setDueDate(dueDate)
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [newDueDate])
