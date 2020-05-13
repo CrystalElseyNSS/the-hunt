@@ -18,17 +18,17 @@ export default (props) => {
     const { submissions, deleteSubmission } = useContext(SubmissionContext)
     const foundCompany = companies.find(co => co.id === props.submission.companyId) || {}
     const formattedAppDate = format(new Date(props.submission.dateApplied), "MM/dd/yyyy")
-
+    
     useEffect(() => {
         const savedSubmission = submissions.find(saved => saved.id === selectedSubmission.id)
         setSubmission(savedSubmission)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [submissions])
-
+    
     useEffect(() => {
         const deletedSubmission = submissions.find(deleted => deleted.id === selectedSubmission.id)
         setSubmission(deletedSubmission)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [submissions])
     
     return (
