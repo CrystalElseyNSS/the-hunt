@@ -11,7 +11,7 @@ import "./Submission.css"
 export default props => {
 
     const { companies } = useContext(CompanyContext)
-    const { submissions, addSubmission } = useContext(SubmissionContext)
+    const { addSubmission } = useContext(SubmissionContext)
     const { tasks } = useContext(TaskContext)
     const { addSubmissionTask } = useContext(SubmissionTaskContext)
     const company = useRef()
@@ -33,10 +33,12 @@ export default props => {
     }, [currentSubmissionId])
 
     const addNewSubmissionTask = () => {
+        // eslint-disable-next-line array-callback-return
         tasks.map((task) => {
             const newSubmissionTask = {
                 submissionId: parseInt(currentSubmissionId),
-                taskId: task.id
+                taskId: task.id,
+                isComplete: false
             }
             addSubmissionTask(newSubmissionTask)
         })
