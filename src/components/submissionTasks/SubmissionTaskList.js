@@ -1,8 +1,8 @@
 import React, { useContext, useState, useEffect } from "react"
 import { SubmissionContext } from "../submissions/SubmissionProvider"
-import { TaskContext } from "./TaskProvider"
+import { TaskContext } from "../tasks/TaskProvider"
 import { SubmissionTaskContext } from "../submissionTasks/SubmissionTasksProvider"
-import JobTask from "./JobTask"
+import SubmissionTask from "./SubmissionTask"
 
 export default (props) => {
 
@@ -25,7 +25,7 @@ export default (props) => {
         <>
             <section>                    
                 {thisUsersTasksforThisSubmission.map(task => {
-                    return <JobTask key={task.id} task={task} submissionId={props.submissionId}  />
+                    return <SubmissionTask key={task.id} task={task} submissionId={props.submissionId}  />
                 })}
             </section>
         </>

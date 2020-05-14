@@ -10,6 +10,7 @@ import { SubmissionTaskProvider } from "./submissionTasks/SubmissionTasksProvide
 import { InterviewProvider } from "./interviews/InterviewProvider"
 import { TaskProvider } from "./tasks/TaskProvider"
 import CompanyForm from "./companies/CompanyForm"
+import { InterviewTaskProvider } from "./interviewTasks/InterviewTasksProvider"
 
 
 export const Dashboard = () => {
@@ -21,7 +22,7 @@ export const Dashboard = () => {
             <InterviewProvider>
             <TaskProvider>
             <SubmissionTaskProvider>
-                                
+            <InterviewTaskProvider>
                 <header className="headerContainer">
                     <div className="logo"></div>
                 </header>
@@ -48,7 +49,7 @@ export const Dashboard = () => {
                     </article>   
                                     
                 </main>
-
+        </InterviewTaskProvider>
         </SubmissionTaskProvider>
         </TaskProvider>
         </InterviewProvider>

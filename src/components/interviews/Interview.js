@@ -1,9 +1,10 @@
 import React, { useState, useContext, useEffect } from "react"
 import { format } from "date-fns"
-import { Button, Modal, ModalBody } from "reactstrap"
+import { Button, Modal, ModalBody, ModalHeader } from "reactstrap"
 import { EditInterviewForm } from "./EditInterviewForm"
 import { CompanyContext } from "../companies/CompanyProvider"
 import { InterviewContext } from "../interviews/InterviewProvider"
+import InterviewTaskList from "../interviewTasks/InterviewTaskList"
 import "./Interview.css"
 
 export default (props) => {
@@ -15,7 +16,8 @@ export default (props) => {
     const formattedIntDate = format(new Date(props.interview.date), "MM/dd/yyyy")
     const [editModal, setEditModal] = useState(false)
     const toggleEdit = () => setEditModal(!editModal)
-
+    const [modal, setModal] = useState(false)
+    const toggle = () => setModal(!modal)
     const [hours, minutes] = props.interview.time.split(":")
     const twelveHourCalculator = (hours % 12) || 12
     let AmOrPm = ""
@@ -44,6 +46,7 @@ export default (props) => {
                 <div className="interview__email">Email: {props.interview.email}</div>
                 <div className="interview__date">Date: {formattedIntDate}</div>
                 <div className="interview__time">Time: {formattedTime}</div>
+                <Button onClick={toggle} color="info" size="sm">Follow Up</Button>{' '}
                 <Button 
                     color="info" 
                     size="sm"
@@ -59,6 +62,15 @@ export default (props) => {
                     }}>Delete
                 </Button>
             </section>
+
+            <Modal isOpen={modal} toggle={toggle}>
+                <ModalHeader toggle={toggle}>
+                    <p className="form--heading">Interview Prep:</p>
+                </ModalHeader>
+                <ModalBody>
+                    <InterviewTaskList interviewId={selectedInterview.id} toggler={toggle} />                    
+                </ModalBody>
+            </Modal>  
 
             <Modal isOpen={editModal} toggle={toggleEdit}>
                 <ModalBody>
