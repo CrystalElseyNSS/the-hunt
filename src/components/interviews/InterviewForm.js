@@ -26,6 +26,7 @@ export default props => {
         contact.current.value = ""
         email.current.value = ""
         title.current.value = ""
+        time.current.value= ""
     }
     
     const constructNewInterview = () => {

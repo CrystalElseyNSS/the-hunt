@@ -5,6 +5,8 @@ import { EditInterviewForm } from "./EditInterviewForm"
 import { CompanyContext } from "../companies/CompanyProvider"
 import { InterviewContext } from "../interviews/InterviewProvider"
 import InterviewTaskList from "../interviewTasks/InterviewTaskList"
+import InterviewPrepForm from "../interviewPrep/InterviewPrepForm"
+import InterviewPrep from "../interviewPrep/InterviewPrep"
 import "./Interview.css"
 
 export default (props) => {
@@ -18,6 +20,8 @@ export default (props) => {
     const toggleEdit = () => setEditModal(!editModal)
     const [modal, setModal] = useState(false)
     const toggle = () => setModal(!modal)
+    const [prepForm, setPrepForm] = useState(false)
+    const toggleForm = () => setPrepForm(!prepForm)
     const [hours, minutes] = props.interview.time.split(":")
     const twelveHourCalculator = (hours % 12) || 12
     let AmOrPm = ""
@@ -46,6 +50,7 @@ export default (props) => {
                 <div className="interview__email">Email: {props.interview.email}</div>
                 <div className="interview__date">Date: {formattedIntDate}</div>
                 <div className="interview__time">Time: {formattedTime}</div>
+                <Button onClick={toggleForm} color="info" size="sm">Prepare</Button>{' '}
                 <Button onClick={toggle} color="info" size="sm">Follow Up</Button>{' '}
                 <Button 
                     color="info" 
@@ -75,6 +80,13 @@ export default (props) => {
             <Modal isOpen={editModal} toggle={toggleEdit}>
                 <ModalBody>
                     <EditInterviewForm key={selectedInterview.id} toggleEdit={toggleEdit} selectedInterview={selectedInterview} />
+                </ModalBody>
+            </Modal>
+
+            <Modal isOpen={prepForm} toggle={toggleForm}>
+                <ModalBody>
+                    <InterviewPrepForm key={selectedInterview.id} toggleForm={toggleForm} selectedInterview={selectedInterview} />
+                <InterviewPrep> key={selectedInterview.id}</InterviewPrep>
                 </ModalBody>
             </Modal>
         </>

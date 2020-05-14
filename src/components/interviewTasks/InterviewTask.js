@@ -4,6 +4,7 @@ import { addDays, format } from "date-fns"
 import { InterviewContext } from "../interviews/InterviewProvider"
 import { InterviewTaskContext } from "./InterviewTasksProvider"
 import "../tasks/Task.css"
+
 export default (props) => {
     const { interviews } = useContext(InterviewContext)
     const { updateInterviewTask, interviewTasks } = useContext(InterviewTaskContext)
@@ -13,7 +14,6 @@ export default (props) => {
     const toggleComplete = () => setAsComplete(!isComplete)
     const [newDueDate, setDueDate] = useState()
     
-    debugger 
     useEffect(() => {
         updateInterviewTask({
             interviewId: thisInterview.id,
