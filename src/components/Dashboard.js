@@ -23,7 +23,6 @@ export const Dashboard = () => {
             <TaskProvider>
             <SubmissionTaskProvider>
             <InterviewTaskProvider>
-                
                 <header className="headerContainer">
                     <div className="logo"></div>
                 </header>

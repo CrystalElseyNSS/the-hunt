@@ -45,7 +45,7 @@ export const InterviewTaskProvider = (props) => {
         <InterviewTaskContext.Provider value={{
             interviewTasks, addInterviewTask, updateInterviewTask
         }}>
-            ({props.children}
+            {props.children}
         </InterviewTaskContext.Provider>
     )
 }
