@@ -2,23 +2,15 @@ import React, { useContext, useState, useEffect } from "react"
 import { InterviewPrepContext } from "./InterviewPrepProvider"
 import "../tasks/Task.css"
 
-export default (props) => {
+export const InterviewPrep = ({ selectedInterview }) => {
     const { interviewPreps } = useContext(InterviewPrepContext)
+    const [selectedInterviewPrep, setInterviewPrep] = useState()
    
-
-
-    const [selectedInterviewPrep, setInterviewPrep] = useState(props.interviewPrep)
-
     useEffect(() => {
-        const thisIntPrep = interviewPreps.find(ip => ip.id === selectedInterviewPrep.id)
+        const thisIntPrep = interviewPreps.find(intPrep => intPrep.interviewId === selectedInterview.id)
         setInterviewPrep(thisIntPrep)
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [interviewPreps])
-
-
-
-
-
 
     return (
         <>

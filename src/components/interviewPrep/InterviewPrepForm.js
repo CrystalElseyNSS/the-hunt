@@ -1,4 +1,4 @@
-import React, { useContext, useRef } from "react"
+import React, { useContext, useRef, useState } from "react"
 import { InterviewPrepContext } from "./InterviewPrepProvider"
 import { Button } from "reactstrap"
 import "../interviews/Interview.css"
@@ -27,7 +27,7 @@ export default props => {
                     <label htmlFor="intPrepForm--answerOne">Why do you want to work for this company? </label>
                     <input
                         type="textarea"
-                        id="intPrepForm--answerOne"
+                        id="intPrepForm--input"
                         ref={answerOne}
                         autoFocus
                         className="form-control"
@@ -40,7 +40,7 @@ export default props => {
                     <label htmlFor="intPrepForm--answerTwo">What makes you the best candidate for this role? </label>
                     <input
                         type="textarea"
-                        id="intPrepForm--answerTwo"
+                        id="intPrepForm--input"
                         ref={answerTwo}
                         autoFocus
                         className="form-control"
@@ -53,7 +53,7 @@ export default props => {
                     <label htmlFor="intPrepForm--answerThree">What questions do you have for the interviewer? </label>
                     <input
                         type="textarea"
-                        id="intPrepForm--answerThree"
+                        id="intPrepForm--input"
                         ref={answerThree}
                         autoFocus
                         className="form-control"

@@ -6,7 +6,6 @@ import { CompanyContext } from "../companies/CompanyProvider"
 import { InterviewContext } from "../interviews/InterviewProvider"
 import InterviewTaskList from "../interviewTasks/InterviewTaskList"
 import InterviewPrepForm from "../interviewPrep/InterviewPrepForm"
-import InterviewPrep from "../interviewPrep/InterviewPrep"
 import "./Interview.css"
 
 export default (props) => {
@@ -40,7 +39,7 @@ export default (props) => {
         setInterview(deletedInterview)
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [interviews])
-    
+   
     return (
         <>
             <section key={props.interview.id} className="interview">
@@ -86,7 +85,6 @@ export default (props) => {
             <Modal isOpen={prepForm} toggle={toggleForm}>
                 <ModalBody>
                     <InterviewPrepForm key={selectedInterview.id} toggleForm={toggleForm} selectedInterview={selectedInterview} />
-                <InterviewPrep> key={selectedInterview.id}</InterviewPrep>
                 </ModalBody>
             </Modal>
         </>

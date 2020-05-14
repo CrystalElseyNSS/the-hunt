@@ -40,3 +40,7 @@ input {
     display: block;
     width: 25rem;
 }
+
+#intPrepForm--input {
+    height: 150px;
+}
