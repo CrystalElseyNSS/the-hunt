@@ -37,7 +37,7 @@ export default (props) => {
                 <div className="submission__company">Company: {foundCompany.companyName}</div>
                 <div className="submission__position">Position: {props.submission.position}</div>
                 <div className="submission__dateApplied">Date Applied: {formattedAppDate}</div>
-                <Button onClick={toggle} color="info" size="sm">Follow Up</Button>{' '}
+                <Button onClick={toggle} color="danger" size="sm">To Do</Button>{' '}
                 <Button 
                     color="info" 
                     size="sm"

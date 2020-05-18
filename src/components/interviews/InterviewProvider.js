@@ -19,8 +19,17 @@ export const InterviewProvider = (props) => {
             },
             body: JSON.stringify(interview)
         })
-            .then(getInterviews)
+        .then((res) => {
+            const createdInterview = res.json()
+            return createdInterview
+        })
+        .then((res) => {
+            getInterviews()
+            const finalInterviewObj = res
+            return finalInterviewObj
+        })
     }
+
     const updateInterview = interview => {
         return fetch(`http://localhost:8080/interviews/${interview.id}`, {
             method: "PUT",

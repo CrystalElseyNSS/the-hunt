@@ -12,7 +12,7 @@ export default props => {
 
     const { companies } = useContext(CompanyContext)
     const { addSubmission } = useContext(SubmissionContext)
-    const { tasks } = useContext(TaskContext)
+    const { tasks } = useContext(TaskContext) 
     const { addSubmissionTask } = useContext(SubmissionTaskContext)
     const company = useRef()
     const position = useRef()
