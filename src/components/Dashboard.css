@@ -14,9 +14,7 @@
 }
 
 .mainContainer {
-    display: flex;
-    flex-wrap: wrap;
-    width: 900px;
+    width: 450px;
     margin: auto;
 }
 
@@ -27,3 +25,22 @@
 .interviewContainer {
     width: 450px;
 }
+
+.logout {
+    margin: auto;
+    margin-top: 20px;
+    width: 450px;
+}
+
+.navBar {
+    color: teal;
+    margin: auto;
+    width: 435px;
+}
+
+NavLink {
+    color: #23b0b6;
+}
+
+
+

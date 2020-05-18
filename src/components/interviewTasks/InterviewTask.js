@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from "react"
 import { Button } from "reactstrap"
-import { addDays, format } from "date-fns"
+import { addDays, subDays, format } from "date-fns"
 import { InterviewContext } from "../interviews/InterviewProvider"
 import { InterviewTaskContext } from "./InterviewTasksProvider"
 import "../tasks/Task.css"
@@ -9,7 +9,7 @@ export default (props) => {
     const { interviews } = useContext(InterviewContext)
     const { updateInterviewTask, interviewTasks } = useContext(InterviewTaskContext)
     const thisInterview = interviews.find(int => int.id === props.interviewId)
-    const relationship = interviewTasks.find(int => int.interviewId === props.interviewId && int.taskId === props.task.id)
+    const relationship = interviewTasks.find(int => int.interviewId === props.interviewId && int.taskId === props.interviewToDo.id)
     const [isComplete, setAsComplete] = useState(relationship.isComplete)
     const toggleComplete = () => setAsComplete(!isComplete)
     const [newDueDate, setDueDate] = useState()
@@ -17,7 +17,7 @@ export default (props) => {
     useEffect(() => {
         updateInterviewTask({
             interviewId: thisInterview.id,
-            taskId: props.task.id,
+            taskId: props.interviewToDo.id,
             isComplete: isComplete,
             id: relationship.id
         })
@@ -26,9 +26,13 @@ export default (props) => {
 
     useEffect(() => {
         let dueDate = thisInterview.date
-        if (props.task.id === 3) {
+        if (props.interviewToDo.id === 1) {
+            dueDate = format(subDays(new Date(thisInterview.date), 4), "MM/dd/yyyy")
+        } else if (props.interviewToDo.id === 2 ) {
+            dueDate = format(subDays(new Date(thisInterview.date), 2), "MM/dd/yyyy")
+        } else if (props.interviewToDo.id === 3) {
             dueDate = format(addDays(new Date(thisInterview.date), 1), "MM/dd/yyyy")
-        } else if (props.task.id === 4 ) {
+        } else if (props.interviewToDo.id === 4) {
             dueDate = format(addDays(new Date(thisInterview.date), 7), "MM/dd/yyyy")
         }
         return setDueDate(dueDate)
@@ -37,10 +41,10 @@ export default (props) => {
 
     return (
         <>
-            <div key={props.task.id} className="task">
+            <div key={props.interviewToDo.id} className="task">
                 <p className="task__description">
                     <span role="img" aria-label="bow">🏹 </span>
-                    To Do: {props.task.task}
+                    To Do: {props.interviewToDo.task}
                 </p>
                 <p className="task__dueDate">
                     <span role="img" aria-label="target">🎯 </span>
