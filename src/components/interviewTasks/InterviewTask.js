@@ -27,9 +27,9 @@ export default (props) => {
     useEffect(() => {
         let dueDate = thisInterview.date
         if (props.interviewToDos.id === 1) {
-            dueDate = format(subDays(new Date(thisInterview.date), 4), "MM/dd/yyyy")
-        } else if (props.interviewToDos.id === 2 ) {
             dueDate = format(subDays(new Date(thisInterview.date), 2), "MM/dd/yyyy")
+        } else if (props.interviewToDos.id === 2 ) {
+            dueDate = format(subDays(new Date(thisInterview.date), 1), "MM/dd/yyyy")
         } else if (props.interviewToDos.id === 3) {
             dueDate = format(addDays(new Date(thisInterview.date), 1), "MM/dd/yyyy")
         } else if (props.interviewToDos.id === 4) {

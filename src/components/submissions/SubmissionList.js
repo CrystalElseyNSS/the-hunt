@@ -5,11 +5,14 @@ import "./Submission.css"
 
 export default () => {
     const { submissions } = useContext(SubmissionContext)
+    const sortedSubmissions = submissions.sort((a,b) => {
+        return new Date(a.dateApplied).getTime() - new Date(b.dateApplied).getTime()
+    })
     let activeUser = parseInt(sessionStorage.getItem("user"))
     const [userSubmissions, setUserSubmissions] = useState([])
 
     useEffect(() => {
-        const activeUserSubmissions = submissions.filter(sub => sub.userId === activeUser)
+        const activeUserSubmissions = sortedSubmissions.filter(sub => sub.userId === activeUser)
         setUserSubmissions(activeUserSubmissions)
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [submissions])
