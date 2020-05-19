@@ -17,7 +17,7 @@ export default () => {
     return (
         <>
             <header className="submission__header">
-                <p className="form--heading">Job Targets</p>
+                <p className="form--heading">Active Job Targets</p>
             </header>
                 
             <section>                    
