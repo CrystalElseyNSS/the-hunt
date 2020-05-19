@@ -12,6 +12,7 @@ import { InterviewToDosProvider } from "./tasks/InterviewToDosProvider"
 import InterviewForm from "./interviews/InterviewForm"
 import InterviewList from "./interviews/InterviewList"
 import { TaskProvider } from "./tasks/TaskProvider"
+import Resources from "./resources/Resources"
 import "./Dashboard.css"
 
 export const Dashboard = () => {
@@ -47,11 +48,17 @@ export const Dashboard = () => {
         </SubmissionProvider>
     )
 
+    const showResources = () => {
+      return (Resources())
+    }
+
     useEffect(() => {
         if (activeList === "interviewContainer") {
             setComponents(showInterviews)
         } else if (activeList === "submissionContainer") {
             setComponents(showSubmissions)
+        } else if (activeList === "resourceContainer") {
+            setComponents(showResources)
         }
     }, [activeList])
 
@@ -73,7 +80,7 @@ export const Dashboard = () => {
                                 <NavLink active onClick={() => setActiveList("interviewContainer")}>Interviews</NavLink>
                             </NavItem>
                             <NavItem>
-                                <NavLink active>Resources</NavLink>
+                                <NavLink active onClick={() => setActiveList("resourceContainer")}>Resources</NavLink>
                             </NavItem>
                             <NavItem>
                                 <NavLink onClick={() => {

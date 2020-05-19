@@ -24,7 +24,7 @@ export default props => {
     let activeUser = parseInt(sessionStorage.getItem("user"))
     const thisUsersCompanies = companies.filter(co => co.userId === activeUser)
     const [interviewDate, setInterviewDate] = useState(null)
-    const [currentInterviewToDoId, setCurrentInterviewToDoId] = useState()
+    const [currentInterviewId, setCurrentInterviewId] = useState(0)
 
     const handleInterviewChange = () => {
         company.current.value = "Select a Company"
@@ -37,16 +37,17 @@ export default props => {
     useEffect(() => {
         addNewInterviewTask()
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [currentInterviewToDoId])
+    }, [currentInterviewId])
 
     const addNewInterviewTask = () => {
         // eslint-disable-next-line array-callback-return
-        interviewToDos.map((task) => {
+        interviewToDos.map((intToDo) => {
             const newInterviewTask = {
-                interviewId: parseInt(currentInterviewToDoId),
-                taskId: task.id,
+                interviewId: parseInt(currentInterviewId),
+                interviewToDosId: intToDo.id,
                 isComplete: false
             }
+            console.log(newInterviewTask)
             addInterviewTask(newInterviewTask)
         })
     }
@@ -66,7 +67,7 @@ export default props => {
                 userId: activeUser
             })
             .then((res) => {
-                setCurrentInterviewToDoId(res.id)
+                setCurrentInterviewId(res.id)
             })
             .then(setInterviewDate)
             .then(props.toggler)
@@ -78,7 +79,7 @@ export default props => {
             <form className="interviewForm">
 
                 <header className="interview__header">
-                    <p className="form--heading">Log New Interview</p>
+                    <p className="form--heading">Schedule New Interview</p>
                 </header>
 
                 <fieldset className="form--field">

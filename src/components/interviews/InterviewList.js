@@ -17,7 +17,7 @@ export default () => {
     return (
         <>
             <header className="interview__header">
-                <p className="form--heading">Scheduled Interviews</p>
+                <p className="form--heading">Upcoming Interviews</p>
             </header>
                 
             <section>                    

@@ -9,7 +9,7 @@ export default (props) => {
     const { interviews } = useContext(InterviewContext)
     const { updateInterviewTask, interviewTasks } = useContext(InterviewTaskContext)
     const thisInterview = interviews.find(int => int.id === props.interviewId)
-    const relationship = interviewTasks.find(int => int.interviewId === props.interviewId && int.taskId === props.interviewToDo.id)
+    const relationship = interviewTasks.find(intTask => intTask.interviewId === props.interviewId && intTask.interviewToDosId === props.interviewToDos.id)
     const [isComplete, setAsComplete] = useState(relationship.isComplete)
     const toggleComplete = () => setAsComplete(!isComplete)
     const [newDueDate, setDueDate] = useState()
@@ -17,7 +17,7 @@ export default (props) => {
     useEffect(() => {
         updateInterviewTask({
             interviewId: thisInterview.id,
-            taskId: props.interviewToDo.id,
+            interviewToDosId: props.interviewToDos.id,
             isComplete: isComplete,
             id: relationship.id
         })
@@ -26,13 +26,13 @@ export default (props) => {
 
     useEffect(() => {
         let dueDate = thisInterview.date
-        if (props.interviewToDo.id === 1) {
+        if (props.interviewToDos.id === 1) {
             dueDate = format(subDays(new Date(thisInterview.date), 4), "MM/dd/yyyy")
-        } else if (props.interviewToDo.id === 2 ) {
+        } else if (props.interviewToDos.id === 2 ) {
             dueDate = format(subDays(new Date(thisInterview.date), 2), "MM/dd/yyyy")
-        } else if (props.interviewToDo.id === 3) {
+        } else if (props.interviewToDos.id === 3) {
             dueDate = format(addDays(new Date(thisInterview.date), 1), "MM/dd/yyyy")
-        } else if (props.interviewToDo.id === 4) {
+        } else if (props.interviewToDos.id === 4) {
             dueDate = format(addDays(new Date(thisInterview.date), 7), "MM/dd/yyyy")
         }
         return setDueDate(dueDate)
@@ -41,10 +41,10 @@ export default (props) => {
 
     return (
         <>
-            <div key={props.interviewToDo.id} className="task">
+            <div key={props.interviewToDos.id} className="task">
                 <p className="task__description">
                     <span role="img" aria-label="bow">🏹 </span>
-                    To Do: {props.interviewToDo.task}
+                    To Do: {props.interviewToDos.task}
                 </p>
                 <p className="task__dueDate">
                     <span role="img" aria-label="target">🎯 </span>

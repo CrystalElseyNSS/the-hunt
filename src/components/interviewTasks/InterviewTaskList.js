@@ -13,7 +13,7 @@ export default (props) => {
     useEffect(() => {
         const tasksForThisInterview = interviewTasks.filter(intTask => intTask.interviewId === props.interviewId)
         const userInterviewTasks = tasksForThisInterview.map(intTask => {
-            const foundTask = interviewToDos.find(task => intTask.taskId === task.id)
+            const foundTask = interviewToDos.find(intToDo => intTask.interviewToDosId === intToDo.id)
             return foundTask
         })
         setUsersTasks(userInterviewTasks)
@@ -24,9 +24,9 @@ export default (props) => {
     return (
         <>
             <section>                    
-                {thisUsersTasksforThisInterview.map(interviewToDo => {
+                {thisUsersTasksforThisInterview.map(interviewToDos => {
                     
-                    return <InterviewTask key={interviewToDo.id} interviewToDo={interviewToDo} interviewId={props.interviewId} />
+                    return <InterviewTask key={interviewToDos.id} interviewToDos={interviewToDos} interviewId={props.interviewId} />
                 })}
             </section>
         </>

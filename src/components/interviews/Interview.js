@@ -65,7 +65,7 @@ export default (props) => {
 
             <Modal isOpen={modal} toggle={toggle}>
                 <ModalHeader toggle={toggle}>
-                    <p className="form--heading">Follow Up:</p>
+                    <p className="form--heading">Target Practice:</p>
                 </ModalHeader>
                 <ModalBody>
                     <InterviewTaskList interviewId={selectedInterview.id} toggler={toggle} />                    

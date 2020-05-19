@@ -15,7 +15,6 @@ export default props => {
 
     const constructNewCompany = () => {
         if (companyName !== "") {
-            
             addCompany({
                 companyName: companyName.current.value,
                 userId: activeUser
@@ -29,7 +28,7 @@ export default props => {
             <form className="form__newCompany">
             
                 <header className="submission__header">
-                    <p className="form--heading">Log New Job</p>
+                    <p className="form--heading">Add New Submission</p>
                 </header>
 
                 <fieldset className="form--field">
