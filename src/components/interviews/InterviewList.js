@@ -5,11 +5,14 @@ import "./Interview.css"
 
 export default () => {
     const { interviews } = useContext(InterviewContext)
+    const sortedInterviews = interviews.sort((a,b) => {
+        return new Date(a.date).getTime() - new Date(b.date).getTime()
+    })
     let activeUser = parseInt(sessionStorage.getItem("user"))
     const [userInterviews, setUserInterviews] = useState([])
 
     useEffect(() => {
-        const activeUserInterviews = interviews.filter(int => int.userId === activeUser)
+        const activeUserInterviews = sortedInterviews.filter(int => int.userId === activeUser)
         setUserInterviews(activeUserInterviews)
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [interviews])
