@@ -19,3 +19,13 @@ npm start
 To quickly access the dummy data, login using 
 - hello@crystalelsey.com
 - pw: tanner
+
+### Technologies
+- HTML, CSS, JavaScript
+- React
+- Reactstrap
+- reactstrap-date-picker
+- JSON Server
+- dbdiagram
+- Sketchboard
+- Canva
