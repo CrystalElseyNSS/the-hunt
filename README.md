@@ -10,7 +10,7 @@ To start the json server, run the following command in your terminal inside of t
 ```
 json-server -p 8000 -w theHunt.json
 ```
-To start the application, run the following command in your terminal inside of the Feeling-Heart-Chart directory:
+To start the application, run the following command in your terminal inside of the-hunt directory:
 ```
 npm start
 ```
