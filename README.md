@@ -1,6 +1,6 @@
 # The Hunt
 
-The Hunt is an application designed to help active job seekers organize their submissions and interviews, as well as ensure effective preparation and follow-up. The job search can be an extensive, highly involved process, and The Hunt provides a platform for proper organization, to prevent valuable opportunities from slipping through the cracks.
+The Hunt is an application designed to help active job seekers organize their submissions and interviews, as well as ensure effective preparation and follow-up. The job search can be an extensive, highly involved process, and The Hunt provides users an edge with a platform to stay organized and prevent valuable opportunities from slipping through the cracks.
 
 ### Installation
 
