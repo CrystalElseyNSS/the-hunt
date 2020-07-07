@@ -17,8 +17,8 @@ npm start
 ### Login
 
 To quickly access the dummy data, login using 
-- hello@crystalelsey.com
-- pw: tanner
+- test@thehunt.com
+- pw: hired
 
 ### Technologies
 - HTML, CSS, JavaScript
