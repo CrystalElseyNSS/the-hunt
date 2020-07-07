@@ -7,6 +7,9 @@ The Hunt is an application designed to help active job seekers organize their su
 In addition to cloning this repository, you will need to clone the [hunt-api repository](https://github.com/CrystalElseyNSS/hunt-api) and install json-server.
 
 To start the json server, run the following command in your terminal inside of the hunt-api directory:
+
 json-server -p 8000 -w theHunt.json
+
 To start the application, run the following command in your terminal inside of the Feeling-Heart-Chart directory:
+
 npm start
