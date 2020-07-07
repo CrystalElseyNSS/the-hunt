@@ -8,8 +8,8 @@ In addition to cloning this repository, you will need to clone the [hunt-api rep
 
 To start the json server, run the following command in your terminal inside of the hunt-api directory:
 
-json-server -p 8000 -w theHunt.json
+> json-server -p 8000 -w theHunt.json
 
 To start the application, run the following command in your terminal inside of the Feeling-Heart-Chart directory:
 
-npm start
+> npm start
