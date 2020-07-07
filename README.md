@@ -12,10 +12,10 @@ json-server -p 8000 -w theHunt.json
 ```
 To start the application, run the following command in your terminal inside of the Feeling-Heart-Chart directory:
 ```
-> npm start
+npm start
 ```
 ### Login
 
 To quickly access the dummy data, login using 
-> hello@crystalelsey.com
-> pw: tanner
+- hello@crystalelsey.com
+- pw: tanner
