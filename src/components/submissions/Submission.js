@@ -36,6 +36,8 @@ export default (props) => {
             <section key={props.submission.id} className="submission">
                 <div className="submission__company">Company: {foundCompany.companyName}</div>
                 <div className="submission__position">Position: {props.submission.position}</div>
+                <div className="submission__position">Source: {props.submission.source}</div>
+                <div className="submission__position">Referral: {props.submission.referral}</div>
                 <div className="submission__dateApplied">Date Applied: {formattedAppDate}</div>
                 <Button onClick={toggle} color="danger" size="sm">To Do</Button>{' '}
                 <Button 
