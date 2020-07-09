@@ -29,6 +29,8 @@ export const EditSubmissionForm = ({ selectedSubmission, toggleEdit }) => {
         updateSubmission({
             companyId: parseInt(updatedSubmission.companyId),
             position: updatedSubmission.position,
+            source: updatedSubmission.source,
+            referral: updatedSubmission.referral,
             dateApplied: dateApplied,
             userId: activeUser,
             id: updatedSubmission.id
@@ -59,6 +61,26 @@ export const EditSubmissionForm = ({ selectedSubmission, toggleEdit }) => {
                     name="position"
                     type="text"
                     defaultValue={selectedSubmission.position}
+                    onChange={handleSubmissionChange}
+                />
+            </fieldset>
+
+            <fieldset className="form--field">
+                <label htmlFor="editSub--source">Job Found On:</label>
+                <input
+                    name="source"
+                    type="text"
+                    defaultValue={selectedSubmission.source}
+                    onChange={handleSubmissionChange}
+                />
+            </fieldset>
+
+            <fieldset className="form--field">
+                <label htmlFor="editSub--referral">Referred By:</label>
+                <input
+                    name="referral"
+                    type="text"
+                    defaultValue={selectedSubmission.referral}
                     onChange={handleSubmissionChange}
                 />
             </fieldset>

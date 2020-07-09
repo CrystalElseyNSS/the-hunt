@@ -16,6 +16,8 @@ export default props => {
     const { addSubmissionTask } = useContext(SubmissionTaskContext)
     const company = useRef()
     const position = useRef()
+    const source = useRef()
+    const referral = useRef()
     const date = useRef()
     let activeUser = parseInt(sessionStorage.getItem("user"))
     const thisUsersCompanies = companies.filter(co => co.userId === activeUser)
@@ -25,6 +27,8 @@ export default props => {
     const handleInputChange = () => {
         company.current.value = "Select a Company"
         position.current.value = ""
+        source.current.value = ""
+        referral.current.value = ""
     }
 
     useEffect(() => {
@@ -53,6 +57,8 @@ export default props => {
             addSubmission({
                 companyId: parseInt(company.current.value),
                 position: position.current.value,
+                source: source.current.value,
+                referral: referral.current.value,
                 dateApplied: dateApplied,
                 userId: activeUser
             })
@@ -88,6 +94,26 @@ export default props => {
                         type="text"
                         ref={position}
                         placeholder="Ex: Jr. Developer"
+                        required
+                    />
+                </fieldset>
+
+                <fieldset className="form--field">
+                    <label htmlFor="newSub--source">Job Found On:</label>
+                    <input
+                        type="text"
+                        ref={source}
+                        placeholder="Ex: Glassdoor"
+                        required
+                    />
+                </fieldset>
+
+                <fieldset className="form--field">
+                    <label htmlFor="newSub--referral">Referred By:</label>
+                    <input
+                        type="text"
+                        ref={referral}
+                        placeholder="Ex: Kate Smith or N/A"
                         required
                     />
                 </fieldset>
