@@ -5,7 +5,7 @@ import { CompanyContext } from "../companies/CompanyProvider"
 import { InterviewToDosContext } from "../tasks/InterviewToDosProvider"
 import { InterviewContext } from "./InterviewProvider"
 import { InterviewTaskContext } from "../interviewTasks/InterviewTasksProvider"
-import "react-datepicker/dist/react-datepicker.css"
+import "react-datepicker/dist/react-datepicker.css";
 import "../submissions/Submission.css"
 import "./Interview.css"
 
