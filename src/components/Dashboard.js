@@ -12,7 +12,9 @@ import { InterviewToDosProvider } from "./tasks/InterviewToDosProvider"
 import InterviewForm from "./interviews/InterviewForm"
 import InterviewList from "./interviews/InterviewList"
 import { TaskProvider } from "./tasks/TaskProvider"
-import Resources from "./resources/Resources"
+import { ConnectionProvider } from "./connections/ConnectionProvider"
+import { ConnectionForm } from "./connections/ConnectionForm"
+import { ConnectionList } from "./connections/ConnectionList"
 import "./Dashboard.css"
 
 export const Dashboard = () => {
@@ -48,17 +50,26 @@ export const Dashboard = () => {
         </SubmissionProvider>
     )
 
-    const showResources = () => {
-      return (Resources())
-    }
+    const showConnections = () => (
+        <ConnectionProvider>
+            <article className="connectionContainer">
+                <section className="connectionForm">
+                    <ConnectionForm />
+                </section>
+                <section className="connectionList">
+                    <ConnectionList />
+                </section> 
+            </article>                
+        </ConnectionProvider>
+    )
 
     useEffect(() => {
         if (activeList === "interviewContainer") {
             setComponents(showInterviews)
         } else if (activeList === "submissionContainer") {
             setComponents(showSubmissions)
-        } else if (activeList === "resourceContainer") {
-            setComponents(showResources)
+        } else if (activeList === "connectionContainer") {
+            setComponents(showConnections)
         }
     }, [activeList])
 
@@ -80,7 +91,7 @@ export const Dashboard = () => {
                                 <NavLink active onClick={() => setActiveList("interviewContainer")}>Interviews</NavLink>
                             </NavItem>
                             <NavItem>
-                                <NavLink active onClick={() => setActiveList("resourceContainer")}>Resources</NavLink>
+                                <NavLink active onClick={() => setActiveList("connectionContainer")}>Connections</NavLink>
                             </NavItem>
                             <NavItem>
                                 <NavLink onClick={() => {

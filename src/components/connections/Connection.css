@@ -1,0 +1,46 @@
+.connectionForm {
+    border: 1px solid lightgray;
+    margin: 10px;
+}
+
+.connectionList {
+    border: 1px solid lightgray;
+    margin: 30px 10px;
+    padding: 5px;
+}
+
+.connection {
+    line-height: 30px;
+    margin: 10px;
+    padding: 10px;
+}
+
+.connection__header {
+    margin: 10px auto 20px auto;
+    text-align: center;
+}
+
+.form--heading {
+    color: #23b0b6;
+    font-size: 30px;
+    font-weight: bolder;
+    text-transform: uppercase;
+}
+
+.form--field {
+    margin: 10px;
+    padding: 5px;
+}
+
+label {
+    display: block;
+}
+
+input {
+    display: block;
+    width: 25rem;
+}
+
+#intPrepForm--input {
+    height: 150px;
+}

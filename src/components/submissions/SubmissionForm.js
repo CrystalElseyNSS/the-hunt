@@ -5,7 +5,7 @@ import { CompanyContext } from "../companies/CompanyProvider"
 import { TaskContext } from "../tasks/TaskProvider"
 import { SubmissionContext } from "./SubmissionProvider"
 import { SubmissionTaskContext } from "../submissionTasks/SubmissionTasksProvider"
-import "react-datepicker/dist/react-datepicker.css"
+import "react-datepicker/dist/react-datepicker.css";
 import "./Submission.css"
 
 export default props => {
