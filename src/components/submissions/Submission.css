@@ -10,6 +10,10 @@
 }
 
 .submission {
+    display: flex;
+    flex: 3;
+    font-size: 12px;
+    justify-content: space-between;
     line-height: 30px;
     margin: 10px;
     padding: 10px;
