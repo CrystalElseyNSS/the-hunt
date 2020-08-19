@@ -24,7 +24,7 @@ export default () => {
                 <p className="form--heading">Active Job Targets</p>
             </header>
 
-            <Table className="submissionTable" hover>
+            <Table className="submissionTable">
                 
                 <tbody>
                

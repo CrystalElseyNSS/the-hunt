@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useState, useEffect } from "react"
+import React, { useContext, useRef } from "react"
 import { Button } from "reactstrap"
 import { CompanyContext } from "../companies/CompanyProvider"
 import { ConnectionContext } from "./ConnectionProvider"

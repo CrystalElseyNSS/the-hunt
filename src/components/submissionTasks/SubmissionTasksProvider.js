@@ -37,10 +37,6 @@ export const SubmissionTaskProvider = (props) => {
         getSubmissionTasks()
     }, [])
 
-    useEffect(() => {
-        console.log("****  SUBMISSIONTASK APPLICATION STATE CHANGED  ****")
-    }, [submissionTasks])
-
     return (
         <SubmissionTaskContext.Provider value={{
             submissionTasks, addSubmissionTask, updateSubmissionTask

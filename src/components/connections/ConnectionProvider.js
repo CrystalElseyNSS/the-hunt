@@ -46,10 +46,6 @@ export const ConnectionProvider = (props) => {
         getConnections()
     }, [])
 
-    useEffect(() => {
-        console.log("****  CONNECTION APPLICATION STATE CHANGED  ****")
-    }, [connections])
-
     return (
         <ConnectionContext.Provider value={{
             connections, addConnection, deleteConnection, updateConnection

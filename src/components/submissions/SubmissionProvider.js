@@ -52,10 +52,6 @@ export const SubmissionProvider = (props) => {
         getSubmissions()
     }, [])
 
-    useEffect(() => {
-        console.log("****  SUBMISSION APPLICATION STATE CHANGED  ****")
-    }, [submissions])
-
     return (
         <SubmissionContext.Provider value={{
             submissions, addSubmission, deleteSubmission, updateSubmission

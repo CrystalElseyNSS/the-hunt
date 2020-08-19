@@ -26,10 +26,6 @@ export const TaskProvider = (props) => {
         getTasks()
     }, [])
 
-    useEffect(() => {
-        console.log("****  TASK APPLICATION STATE CHANGED  ****")
-    }, [tasks])
-
     return (
         <TaskContext.Provider value={{
             tasks, updateTask

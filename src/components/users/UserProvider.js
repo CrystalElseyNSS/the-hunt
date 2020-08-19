@@ -26,10 +26,6 @@ export const UserProvider = (props) => {
         getUsers()
     }, [])
 
-    useEffect(() => {
-        console.log("****  USER APPLICATION STATE CHANGED  ****")
-    }, [users])
-
     return (
         <UserContext.Provider value={{
             users, addUser

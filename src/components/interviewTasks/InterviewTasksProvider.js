@@ -37,10 +37,6 @@ export const InterviewTaskProvider = (props) => {
         getInterviewTasks()
     }, [])
 
-    useEffect(() => {
-        console.log("****  INTERVIEWTASK APPLICATION STATE CHANGED  ****")
-    }, [interviewTasks])
-
     return (
         <InterviewTaskContext.Provider value={{
             interviewTasks, addInterviewTask, updateInterviewTask

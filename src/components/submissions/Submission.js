@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from "react"
 import { format } from "date-fns"
-import { Button, Modal, ModalHeader, ModalBody } from "reactstrap"
+import { Modal, ModalHeader, ModalBody, NavLink } from "reactstrap"
 import { EditSubmissionForm } from "../submissions/EditSubmissionForm"
 import { CompanyContext } from "../companies/CompanyProvider"
 import { SubmissionContext } from "./SubmissionProvider"
@@ -33,34 +33,37 @@ export default (props) => {
 
     return (
         <>
-
             <tr key={props.submission.id} className="submission">
-                <td>{foundCompany.companyName}</td>
-                <td>{props.submission.position}</td>
-                <td>{formattedAppDate}</td>
-               
-                    {/* <td className="icon--submission">
-                        <i className="fas fa-exclamation-circle" aria-hidden="true" onClick={toggle}></i>
-                    </td> */}
-                <td>
-                    <Button
-                        color="info"
-                        size="sm"
-                        onClick={() => {
+                <td className="submission--company">{foundCompany.companyName}</td>
+                <td className="submission--position">{props.submission.position}</td>
+                <td className="submission--date">{formattedAppDate}</td>
+                <td className="submissionBtns">
+                    <NavLink
+                        className="submission--btn"
+                        onClick={(evt) => {
+                            evt.preventDefault()
+                            toggle()
+                        }}>
+                        <span role="img" aria-label="list">🎯</span>
+                    </NavLink>
+                    <NavLink
+                        className="submission--btn"
+                        onClick={(evt) => {
+                            evt.preventDefault()
                             toggleEdit()
-                        }}
-                    >Edit
-                        </Button>{' '}
-                    <Button
-                        color="info"
-                        size="sm"
-                        onClick={() => {
+                        }}>
+                        <span role="img" aria-label="write">📝</span>
+                    </NavLink>
+                    <NavLink
+                        className="submission--btn"
+                        onClick={(evt) => {
+                            evt.preventDefault()
                             deleteSubmission(props.submission.id)
-                        }}>Delete
-                        </Button>
-                        </td>
+                        }}><span role="img" aria-label="delete">❌</span>
+                    </NavLink>
+                </td>
             </tr>
-     
+
 
 
             <Modal isOpen={modal} toggle={toggle}>
