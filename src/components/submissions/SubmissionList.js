@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from "react"
+import { Table } from 'reactstrap';
 import { SubmissionContext } from "./SubmissionProvider"
 import Submission from "./Submission"
 import "./Submission.css"
@@ -22,12 +23,19 @@ export default () => {
             <header className="submission__header">
                 <p className="form--heading">Active Job Targets</p>
             </header>
+
+            <Table className="submissionTable" hover>
                 
-            <section>                    
-                {userSubmissions.map(sub => {
-                    return <Submission key={sub.id} value={sub.id} submission={sub} />
-                })}
-            </section>
+                <tbody>
+               
+                
+                                     
+                        {userSubmissions.map(sub => {
+                            return <Submission key={sub.id} value={sub.id} submission={sub} />
+                        })}
+                    
+                </tbody>
+            </Table>
         </>
     )   
 }

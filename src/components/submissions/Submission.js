@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from "react"
 import { format } from "date-fns"
-import { Button, Modal, ModalHeader, ModalBody, ListGroup, ListGroupItem } from "reactstrap"
+import { Button, Modal, ModalHeader, ModalBody } from "reactstrap"
 import { EditSubmissionForm } from "../submissions/EditSubmissionForm"
 import { CompanyContext } from "../companies/CompanyProvider"
 import { SubmissionContext } from "./SubmissionProvider"
@@ -34,15 +34,15 @@ export default (props) => {
     return (
         <>
 
-            <ListGroup key={props.submission.id} horizontal className="submission">
-                <div>{foundCompany.companyName} : </div>
-                <div>{props.submission.position}</div>
-                <div>{formattedAppDate}</div>
-                <ListGroup horizontal>
-                    <div className="icon--submission">
+            <tr key={props.submission.id} className="submission">
+                <td>{foundCompany.companyName}</td>
+                <td>{props.submission.position}</td>
+                <td>{formattedAppDate}</td>
+               
+                    {/* <td className="icon--submission">
                         <i className="fas fa-exclamation-circle" aria-hidden="true" onClick={toggle}></i>
-                    </div>
-                    {/* <Button onClick={toggle} color="danger" size="sm">To Do</Button>{' '} */}
+                    </td> */}
+                <td>
                     <Button
                         color="info"
                         size="sm"
@@ -58,11 +58,9 @@ export default (props) => {
                             deleteSubmission(props.submission.id)
                         }}>Delete
                         </Button>
-                    </ListGroup>
-            </ListGroup>
-            {/* <div className="submission__position">Source: {props.submission.source}</div>
-                <div className="submission__position">Referral: {props.submission.referral}</div> */}
-            {/* <div className="submission__dateApplied">Date Applied: {formattedAppDate}</div> */}
+                        </td>
+            </tr>
+     
 
 
             <Modal isOpen={modal} toggle={toggle}>

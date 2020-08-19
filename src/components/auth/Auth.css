@@ -2,14 +2,14 @@
     background-image: url(Logo.png);
     background-repeat: no-repeat;
     background-size: cover;
-    width: 525px;
-    height: 525px;
+    width: 450px;
+    height: 450px;
     margin: auto;
 }
 
 .authContainer {
     margin: auto;
-    width: 525px;
+    width: 450px;
 }
 
 .loginContainer {

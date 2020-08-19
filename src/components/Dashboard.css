@@ -1,35 +1,35 @@
 .headerContainer {
     display: block;
     margin: auto;
-    width: 525px;
+    width: 450px;
 }
 
 .logo {
     background-image: url(Logo.png);
     background-repeat: no-repeat;
     background-size: cover;
-    width: 525px;
-    height: 525px;
+    width: 450px;
+    height: 450px;
     margin: auto;
 }
 
 .mainContainer {
-    width: 525px;
+    width: 450px;
     margin: auto;
 }
 
 .submissionContainer {
-    width: 525px;
+    width: 450px;
 }
 
 .interviewContainer {
-    width: 525px;
+    width: 450px;
 }
 
 .logout {
     margin: auto;
     margin-top: 20px;
-    width: 525px;
+    width: 450px;
 }
 
 .navBar {
