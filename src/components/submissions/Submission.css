@@ -10,14 +10,49 @@
 }
 
 .submission {
+    display: flex;
+    font-size: 12px;
     line-height: 30px;
     margin: 10px;
-    padding: 10px;
+}
+
+.submissionTable {
+    width: 450px;
 }
 
 .submission__header {
     margin: 10px auto 20px auto;
     text-align: center;
+}
+
+.submissionTable--header {
+    width: 100%;   
+}
+
+.submission--company {
+    padding: 2px !important;
+    width: 25%;
+}
+
+.submission--position {
+    padding: 2px !important;
+    width: 35%;
+}
+
+.submission--date {
+    padding: 2px !important;
+    width: 20%;
+}
+
+.submissionBtns {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 2px !important;
+    width: 20%;
+}
+
+.submission--btn {
+    padding: 0px !important;
 }
 
 .form--heading {

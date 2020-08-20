@@ -52,10 +52,6 @@ export const InterviewProvider = (props) => {
         getInterviews()
     }, [])
 
-    useEffect(() => {
-        console.log("****  INTERVIEW APPLICATION STATE CHANGED  ****")
-    }, [interviews])
-
     return (
         <InterviewContext.Provider value={{
             interviews, addInterview, deleteInterview, updateInterview

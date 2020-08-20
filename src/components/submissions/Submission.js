@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from "react"
 import { format } from "date-fns"
-import { Button, Modal, ModalHeader, ModalBody } from "reactstrap"
+import { Modal, ModalHeader, ModalBody, NavLink } from "reactstrap"
 import { EditSubmissionForm } from "../submissions/EditSubmissionForm"
 import { CompanyContext } from "../companies/CompanyProvider"
 import { SubmissionContext } from "./SubmissionProvider"
@@ -8,7 +8,7 @@ import SubmissionTaskList from "../submissionTasks/SubmissionTaskList"
 import "./Submission.css"
 
 export default (props) => {
-    
+
     const [modal, setModal] = useState(false)
     const toggle = () => setModal(!modal)
     const [editModal, setEditModal] = useState(false)
@@ -18,52 +18,62 @@ export default (props) => {
     const { submissions, deleteSubmission } = useContext(SubmissionContext)
     const foundCompany = companies.find(co => co.id === props.submission.companyId) || {}
     const formattedAppDate = format(new Date(props.submission.dateApplied), "MM/dd/yyyy")
-    
+
     useEffect(() => {
         const savedSubmission = submissions.find(saved => saved.id === selectedSubmission.id)
         setSubmission(savedSubmission)
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [submissions])
-    
+
     useEffect(() => {
         const deletedSubmission = submissions.find(deleted => deleted.id === selectedSubmission.id)
         setSubmission(deletedSubmission)
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [submissions])
-    
+
     return (
         <>
-            <section key={props.submission.id} className="submission">
-                <div className="submission__company">Company: {foundCompany.companyName}</div>
-                <div className="submission__position">Position: {props.submission.position}</div>
-                <div className="submission__position">Source: {props.submission.source}</div>
-                <div className="submission__position">Referral: {props.submission.referral}</div>
-                <div className="submission__dateApplied">Date Applied: {formattedAppDate}</div>
-                <Button onClick={toggle} color="danger" size="sm">To Do</Button>{' '}
-                <Button 
-                    color="info" 
-                    size="sm"
-                    onClick={() => {
-                        toggleEdit()}}
-                    >Edit
-                </Button>{' '}
-                <Button 
-                    color="info" 
-                    size="sm"
-                    onClick={() => {
-                        deleteSubmission(props.submission.id)
-                    }}>Delete
-                </Button>
-            </section>
+            <tr key={props.submission.id} className="submission">
+                <td className="submission--company">{foundCompany.companyName}</td>
+                <td className="submission--position">{props.submission.position}</td>
+                <td className="submission--date">{formattedAppDate}</td>
+                <td className="submissionBtns">
+                    <NavLink
+                        className="submission--btn"
+                        onClick={(evt) => {
+                            evt.preventDefault()
+                            toggle()
+                        }}>
+                        <span role="img" aria-label="list">🎯</span>
+                    </NavLink>
+                    <NavLink
+                        className="submission--btn"
+                        onClick={(evt) => {
+                            evt.preventDefault()
+                            toggleEdit()
+                        }}>
+                        <span role="img" aria-label="write">📝</span>
+                    </NavLink>
+                    <NavLink
+                        className="submission--btn"
+                        onClick={(evt) => {
+                            evt.preventDefault()
+                            deleteSubmission(props.submission.id)
+                        }}><span role="img" aria-label="delete">❌</span>
+                    </NavLink>
+                </td>
+            </tr>
+
+
 
             <Modal isOpen={modal} toggle={toggle}>
                 <ModalHeader toggle={toggle}>
                     <p className="form--heading">Target Practice:</p>
                 </ModalHeader>
                 <ModalBody>
-                    <SubmissionTaskList submissionId={props.submission.id} toggler={toggle} />                    
+                    <SubmissionTaskList submissionId={props.submission.id} toggler={toggle} />
                 </ModalBody>
-            </Modal>  
+            </Modal>
 
             <Modal isOpen={editModal} toggle={toggleEdit}>
                 <ModalBody>
@@ -71,7 +81,7 @@ export default (props) => {
                 </ModalBody>
             </Modal>
         </>
-        
+
     )
-    
+
 }   

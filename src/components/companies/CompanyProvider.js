@@ -37,10 +37,6 @@ export const CompanyProvider = (props) => {
         getCompanies()
     }, [])
 
-    useEffect(() => {
-        console.log("****  COMPANY APPLICATION STATE CHANGED  ****")
-    }, [companies])
-
     return (
         <CompanyContext.Provider value={{
             companies, addCompany, updateCompany
