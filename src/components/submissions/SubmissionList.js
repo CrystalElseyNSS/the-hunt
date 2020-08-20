@@ -6,7 +6,7 @@ import "./Submission.css"
 
 export default () => {
     const { submissions } = useContext(SubmissionContext)
-    const sortedSubmissions = submissions.sort((a,b) => {
+    const sortedSubmissions = submissions.sort((a, b) => {
         return new Date(a.dateApplied).getTime() - new Date(b.dateApplied).getTime()
     })
     let activeUser = parseInt(sessionStorage.getItem("user"))
@@ -15,7 +15,7 @@ export default () => {
     useEffect(() => {
         const activeUserSubmissions = sortedSubmissions.filter(sub => sub.userId === activeUser)
         setUserSubmissions(activeUserSubmissions)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [submissions])
 
     return (
@@ -25,17 +25,12 @@ export default () => {
             </header>
 
             <Table className="submissionTable">
-                
                 <tbody>
-               
-                
-                                     
-                        {userSubmissions.map(sub => {
-                            return <Submission key={sub.id} value={sub.id} submission={sub} />
-                        })}
-                    
+                    {userSubmissions.map(sub => {
+                        return <Submission key={sub.id} value={sub.id} submission={sub} />
+                    })}
                 </tbody>
             </Table>
         </>
-    )   
+    )
 }
